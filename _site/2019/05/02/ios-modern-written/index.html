@@ -1,0 +1,1140 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next muse use-motion" lang="zhh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Han Chow" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="参考">
+<meta name="keywords" content="Jekyll, NexT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS - 一些现代化的Objective-C 写法">
+<meta property="og:url" content="http://localhost:4000/2019/05/02/ios-modern-written/">
+<meta property="og:site_name" content="Han Chow">
+<meta property="og:description" content="参考">
+<meta property="og:locale" content="zhh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS - 一些现代化的Objective-C 写法">
+<meta name="twitter:description" content="参考">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: ''
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>iOS - 一些现代化的Objective-C 写法 | Han Chow</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?115fef48c62e3ba51a36e5b946decaae";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zhh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Han Chow</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2019/05/02/ios-modern-written/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Han Chow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han Chow">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            iOS - 一些现代化的Objective-C 写法
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text"></span>
+              
+              <time title="" itemprop="dateCreated datePublished" datetime="2019-05-02T00:00:00+08:00">
+                2019-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <p>参考</p>
+
+<ol>
+  <li>
+    <p><a href="https://developer.apple.com/library/content/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html">Next
+Adopting Modern Objective-C</a></p>
+  </li>
+  <li>
+    <p><a href="http://www.starfelix.com/blog/2014/04/13/zheng-que-bian-xie-designated-initializerde-ji-ge-yuan-ze/">正确编写Designated Initializer的几个原则</a></p>
+  </li>
+  <li><a href="http://blog.sunnyxx.com/2015/06/12/objc-new-features-in-2015/">2015 Objective-C 新特性</a></li>
+  <li><a href="https://developer.apple.com/swift/blog/?id=25">Nullability and Objective-C</a></li>
+</ol>
+
+<hr />
+<h2 id="构造方法中返回值应使用instancetype而不是id">构造方法中，返回值应使用instancetype，而不是id</h2>
+
+<p>首先，我们来看看以下代码：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17</pre></td><td class="code"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">MyObject</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">factoryMethodA</span><span class="p">;</span>
+<span class="k">+</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">factoryMethodB</span><span class="p">;</span>
+<span class="k">@end</span>
+ 
+<span class="k">@implementation</span> <span class="nc">MyObject</span>
+<span class="c1">//使用instancetype
+</span><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="n">factoryMethodA</span> <span class="p">{</span> <span class="k">return</span> <span class="p">[[[</span><span class="n">self</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span> <span class="p">}</span>
+<span class="c1">//使用id
+</span><span class="o">+</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">factoryMethodB</span> <span class="p">{</span> <span class="k">return</span> <span class="p">[[[</span><span class="n">self</span> <span class="nf">class</span><span class="p">]</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">init</span><span class="p">];</span> <span class="p">}</span>
+<span class="k">@end</span>
+ 
+<span class="kt">void</span> <span class="n">doSomething</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">NSUInteger</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyObject</span> <span class="nf">factoryMethodA</span><span class="p">]</span> <span class="nf">count</span><span class="p">];</span> <span class="c1">// Return type of +factoryMethodA is taken to be "MyObject *"
+</span>    <span class="n">y</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyObject</span> <span class="nf">factoryMethodB</span><span class="p">]</span> <span class="nf">count</span><span class="p">];</span> <span class="c1">// Return type of +factoryMethodB is "id"
+</span><span class="p">}</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<h6 id="id与instancetype区别">id与instancetype区别：</h6>
+
+<ul>
+  <li>id :因返回值有可能是任何类型的对象，此时编译器不会提示该对象没有count方法。</li>
+  <li>instancetype : 返回MyObject类型的信息，<strong>此时翻译器会检查该类中有没有count方法</strong>。这样可以提高安全性。</li>
+</ul>
+
+<hr />
+
+<h2 id="多使用property">多使用@property</h2>
+
+<h6 id="使用property-有以下几个好处">使用@property 有以下几个好处:</h6>
+
+<ul>
+  <li>自动生成Getter/Setter方法</li>
+  <li>可以更好的理解对变量的声明使用方式和位置。</li>
+  <li>可以添加关键词（keyword）来约束/限制变量的行为/生成方式。</li>
+</ul>
+
+<h6 id="使用property-需遵从的规则">使用@property 需遵从的规则:</h6>
+
+<ul>
+  <li>使用readwrite 关键词修饰的property，会产生Getter/Setter方法。Setter方法有一个传入的参数并且没有返回值，Getter方法没有传参并仅返回一个值。（通常也是默认的readwrite）</li>
+  <li>使用readonly 关键词修饰的property，只有一个Getter方法生成。这个Getter方法同样也是没有传参并仅返回一个值。</li>
+  <li><strong>任何情况下，一个Getter方法应该是 幂等的（idempotent）</strong>，意思就是说，如果这个Getter方法调用了两次，两次的返回值应该是一模一样的。不过呢，也是允许每次调用这个Getter方法时，这个值是重新计算的。（这不是废话吗….）</li>
+</ul>
+
+<blockquote>
+  <p>注意：<br />
+当你要决定怎样使用@property的时候，以下是不可以使用的情况:</p>
+</blockquote>
+
+<blockquote>
+  <ol>
+    <li>init方法 （init method）</li>
+    <li>copy / mutableCopy 方法 （copy method, mutableCopy method）</li>
+    <li>类的构造方法 （A class factory method）</li>
+    <li>会进行多个操作并返回BOOL的方法 （A method that initiates an action and returns a BOOL result）</li>
+    <li>当使用Getter方法时，会在内部改变的（A method that explicitly changes internal state as a side effect of a getter）</li>
+  </ol>
+</blockquote>
+
+<hr />
+
+<h2 id="多使用ns_enum或ns_options定义枚举值">多使用NS_ENUM或NS_OPTIONS定义枚举值</h2>
+
+<h6 id="使用ns_enum和ns_options有以下几个好处">使用NS_ENUM和NS_OPTIONS有以下几个好处:</h6>
+
+<ul>
+  <li>在Xcode里可以自动生成输入内容。</li>
+  <li>可以明确定义枚举的类型(NSInteger/NSUInteger)以及枚举值的大小范围</li>
+  <li>可以更好的兼容旧版本的编译器，并让新的编译器更好的编译</li>
+</ul>
+
+<p><strong>示例：</strong></p>
+
+<ul>
+  <li>如UITableViewCellStyle</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code>typedef NS_ENUM(NSInteger, UITableViewCellStyle) {
+        UITableViewCellStyleDefault,
+        UITableViewCellStyleValue1,
+        UITableViewCellStyleValue2,
+        UITableViewCellStyleSubtitle
+};
+</code></pre></td></tr></tbody></table></div></div>
+
+<ul>
+  <li>如UIViewAutoresizing:</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9</pre></td><td class="code"><pre class="highlight"><code>typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {
+        UIViewAutoresizingNone                 = 0,//值为0
+        UIViewAutoresizingFlexibleLeftMargin   = 1 &lt;&lt; 0,//值为2的0次方
+        UIViewAutoresizingFlexibleWidth        = 1 &lt;&lt; 1,//值为2的1次方
+        UIViewAutoresizingFlexibleRightMargin  = 1 &lt;&lt; 2,//值为2的2次方
+        UIViewAutoresizingFlexibleTopMargin    = 1 &lt;&lt; 3,//值为2的3次方
+        UIViewAutoresizingFlexibleHeight       = 1 &lt;&lt; 4,
+        UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
+};
+</code></pre></td></tr></tbody></table></div></div>
+
+<blockquote>
+  <p>注意 ：</p>
+</blockquote>
+
+<blockquote>
+  <p>1.NS_OPTIONS 用于位移（bitmask）的枚举值，其类型应总是NSUInteger 。</p>
+
+  <p>（位移枚举使用的场景：存在需要多个枚举值的时候）</p>
+
+  <p>2.NS_ENUM 用于通用的枚举值，其类型应总是NSInteger</p>
+
+  <p>（通用的枚举值是不可以多个枚举值共存的，只能使用一项）</p>
+
+  <p>3.枚举值一般是4个字节的int值，在64位的情况下是8个字节</p>
+</blockquote>
+
+<hr />
+
+<h2 id="在init时使用-ns_designated_initializer">在init时使用	NS_DESIGNATED_INITIALIZER</h2>
+
+<p>Designated Initializer (指定初始化器),可以如Swift 一般指定构造器和便捷构造器，并且方便编译器检查代码正确性。</p>
+
+<h6 id="使用中的原则">使用中的原则</h6>
+
+<ul>
+  <li>一个类的正确初始化方法应该是从子类到父类的顺序，依次调用类的Designated Initializer。从父类初始化一个子类对象也是遵从这一原则。</li>
+  <li>如果在子类中，指定了一个新的构造器，这个构造器必须调用父类的Designated Initializer，并且需要重写这个Designated Initializer，并将其指向子类新的构造器。</li>
+  <li>如果有多个Secondary initializers(次要初始化器)，它们之间可以任意调用，但最后必须指向Designated Initializer。在Secondary initializers内不能直接调用父类的初始化器</li>
+</ul>
+
+<p>示例：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41</pre></td><td class="code"><pre class="highlight"><code>
+<span class="cp">#import "TestInitView.h"
+</span>
+
+<span class="k">@implementation</span> <span class="nc">TestInitView</span>
+
+<span class="c1">//super override
+</span><span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="nf">initWithFrame</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">frame</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">self</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">frame</span> <span class="nf">andName</span><span class="p">:</span><span class="s">@""</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">//Designated Initializer
+</span><span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithFrame</span><span class="p">:(</span><span class="n">CGRect</span><span class="p">)</span><span class="nv">frame</span> <span class="nf">andName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span><span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">frame</span><span class="p">]){</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">//Instance secondary initializer
+</span><span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span><span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">self</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">CGRectZero</span> <span class="nf">andName</span><span class="p">:</span><span class="n">name</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">//Instance secondary initializer
+</span><span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">initWithName2</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span><span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">self</span> <span class="nf">initWithName</span><span class="p">:</span><span class="n">name</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">//Class secondary initializer
+</span><span class="k">+</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">testInitViewWithName</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">name</span><span class="p">{</span>
+    <span class="n">TestInitView</span> <span class="o">*</span><span class="n">testView</span><span class="o">=</span><span class="p">[[</span><span class="n">TestInitView</span> <span class="nf">alloc</span><span class="p">]</span> <span class="nf">initWithFrame</span><span class="p">:</span><span class="n">CGRectZero</span> <span class="nf">andName</span><span class="p">:</span><span class="n">name</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">testView</span><span class="p">){</span>
+        <span class="c1">//do something here
+</span>    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">testView</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h2 id="nullability">Nullability</h2>
+
+<p>在Swift中，可以使用语法糖（！和？）来表示一个对象是否Optional,如view！和view？。
+而在Objective-C中是没有这样的区分的。这样的情况下，当Swift和Objective-C混编的时候，编译器就无法判断对象是否Optional。</p>
+
+<p>为了解决这一问题，Xcode 6.3引进了新的特性 ： Nullability Annotations。</p>
+
+<blockquote>
+  <p>Nullability 在编译器层面提供了空值的类型检查，在类型不符时给出 warning，方便开发者第一时间发现潜在问题</p>
+</blockquote>
+
+<p>其中，有两个新的类型注释：</p>
+
+<ul>
+  <li>__nullable (对象可否为NULL或nil)</li>
+  <li>__nonnull（对象不可为空）</li>
+</ul>
+
+<p>当用于修饰一个变量的时候，可以这样用：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">,</span> <span class="n">nonnull</span><span class="p">)</span> <span class="n">Sark</span> <span class="o">*</span><span class="n">sark</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSArray</span> <span class="o">*</span><span class="n">friends</span><span class="p">;</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>当用于修饰一个方法时，可以这样用：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>+ (nullable NSString *)friendWithName:(nonnull NSString *)name;
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>当用于修饰一个Block时，可以这样用:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>- (void)startWithCompletionBlock:(nullable void (^)(NSError * __nullable error))block;
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>除此之外，还有一个null_resettable。
+举例说明：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">null_resettable</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">,</span> <span class="n">strong</span><span class="p">)</span> <span class="n">UIView</span> <span class="o">*</span><span class="n">view</span><span class="p">;</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>加了null_resettable后，可以setView nil。然而调用getter的时候会触发-(void)loadView从而返回一个非空的view。</p>
+
+<h6 id="默认加nonnull修饰符的宏--audited-regions-">默认加nonnull修饰符的宏 （ Audited Regions ）</h6>
+
+<p>示例:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code><span class="n">NS_ASSUME_NONNULL_BEGIN</span>
+<span class="k">@interface</span> <span class="nc">Sark</span> <span class="p">:</span> <span class="nc">NSObject</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">,</span> <span class="n">nullable</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">workingCompany</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span> <span class="n">NSArray</span> <span class="o">*</span><span class="n">friends</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">gayFriend</span><span class="p">;</span>
+<span class="k">@end</span>
+<span class="n">NS_ASSUME_NONNULL_END</span>
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>上述代码中，包在宏里的对象默认加nonnull修饰符，这样子，只需要把nullable的指出来就可以了。</p>
+
+<h2 id="轻量级泛型lightweight-generics">轻量级泛型(Lightweight Generics)</h2>
+
+<p>这里的轻量，是因为这个语法是纯编译器的支持，和Nullability 一样，没有在runtime层面上升级，也就是说这个特性是向下兼容的。</p>
+
+<p>示例:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3</pre></td><td class="code"><pre class="highlight"><code>NSArray&lt;NSString *&gt; *strings = @[@"sun", @"yuan"];
+NSDictionary&lt;NSString *, NSNumber *&gt; *mapping = @{@"a": @1, @"b": @2};
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>这样可以指定容器中的类型后，有两个好处：</p>
+
+<ul>
+  <li>自动提示代码时可以自动找到该类型可选的方法或函数。</li>
+  <li>当代码中加入错误的类型时，编译器会有提示。</li>
+</ul>
+
+<h6 id="引申---自定义泛型类">引申 - 自定义泛型类</h6>
+
+<p>示例：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code><span class="k">@interface</span> <span class="nc">Stack</span><span class="o">&lt;</span><span class="n">ObjectType</span><span class="o">&gt;</span> <span class="o">:</span> <span class="n">NSObject</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">pushObject</span><span class="o">:</span><span class="p">(</span><span class="n">ObjectType</span><span class="p">)</span><span class="n">object</span><span class="p">;</span>
+<span class="k">-</span> <span class="p">(</span><span class="n">ObjectType</span><span class="p">)</span><span class="n">popObject</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">)</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">ObjectType</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">allObjects</span><span class="p">;</span>
+<span class="k">@end</span>
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>上述代码中，ObjectType是传入类型的placeholder， 只能在interface上定义。这样的类型在interface到end区间内有效，可以用于作为参数传入传出，也可以作为NSArray的泛型类型。</p>
+
+<p>在此基础上，也可以增加类型限制，例如:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5</pre></td><td class="code"><pre class="highlight"><code>// 只接受 NSNumber * 的泛型
+@interface Stack&lt;ObjectType: NSNumber *&gt; : NSObject
+// 只接受满足 NSCopying 协议的泛型
+@interface Stack&lt;ObjectType: id&lt;NSCopying&gt;&gt; : NSObject
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<h6 id="引申---协变性和逆变性">引申 - 协变性和逆变性</h6>
+
+<p>以下代码中， 虽然都是Stack，但其实是三个不同的Type:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code>Stack *stack; // Stack *
+Stack&lt;NSString *&gt; *stringStack; // Stack&lt;NSString *&gt;
+Stack&lt;NSMutableString *&gt; *mutableStringStack; // Stack&lt;NSMutableString *&gt;
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>而当其中的任意一个Type的对象要进行类型转化时	，不指定泛型类型的对象可以和任何类型转化，但<strong>指定了泛型类型之后，两个类型间不可强转。</strong> 这时候，就需要用到以下两个修饰符:</p>
+
+<ul>
+  <li>__covariant : 协变性，子类型可以强转到父类型（里氏替换原则）</li>
+  <li>__contravariant - 逆变性，父类型可以强转到子类型</li>
+</ul>
+
+<p>使用方法：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code>//协变
+@interface Stack&lt;__covariant ObjectType&gt; : NSObject
+//逆变
+@interface Stack&lt;__contravariant ObjectType&gt; : NSObject
+</code></pre></td></tr></tbody></table></div></div>
+
+<hr />
+
+<h2 id="__kindof-修饰符">__kindof 修饰符</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code><span class="c1">//原来
+</span><span class="k">-</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">identifier</span><span class="p">;</span>
+<span class="c1">//在UITableView中的使用
+</span><span class="k">-</span> <span class="p">(</span><span class="n">__kindof</span> <span class="n">UITableViewCell</span> <span class="o">*</span><span class="p">)</span><span class="nf">dequeueReusableCellWithIdentifier</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">identifier</span><span class="p">;</span>
+
+<span class="c1">//变量中的使用
+</span><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span> <span class="n">readonly</span><span class="p">,</span> <span class="n">copy</span><span class="p">)</span> <span class="n">NSArray</span><span class="o">&lt;</span><span class="n">__kindof</span> <span class="n">UIView</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">subviews</span><span class="p">;</span>
+
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>增加了__kindof 修饰符后，编译器会知道该方法返回的是什么类型的对象，这样就不用在取值时强转类型了。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7</pre></td><td class="code"><pre class="highlight"><code>//未用__kindof
+UIButton *button = (UIButton*) view.subviews.lastObject;
+
+//使用了__kindof
+//编译器不会提示
+
+UIButton *button = view.subviews.lastObject;
+</code></pre></td></tr></tbody></table></div></div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/02/ios-marcos/" rel="prev" title="iOS - 一些常用的宏">
+                iOS - 一些常用的宏 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.png"
+               alt="Han Chow" />
+          <p class="site-author-name" itemprop="name">Han Chow</p>
+           
+              <p class="site-description motion-element" itemprop="description">To improve is to change,to perfect is to change often.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name"></span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#构造方法中返回值应使用instancetype而不是id"> <span class="nav-number">1</span> <span class="nav-text">构造方法中，返回值应使用instancetype，而不是id</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-6"> <a class="nav-link" href="#id与instancetype区别"> <span class="nav-number">1.1</span> <span class="nav-text">id与instancetype区别：</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#多使用property"> <span class="nav-number">2</span> <span class="nav-text">多使用@property</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-6"> <a class="nav-link" href="#使用property-有以下几个好处"> <span class="nav-number">2.1</span> <span class="nav-text">使用@property 有以下几个好处:</span> </a> </li> <li class="nav-item nav-level-6"> <a class="nav-link" href="#使用property-需遵从的规则"> <span class="nav-number">2.2</span> <span class="nav-text">使用@property 需遵从的规则:</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#多使用ns_enum或ns_options定义枚举值"> <span class="nav-number">3</span> <span class="nav-text">多使用NS_ENUM或NS_OPTIONS定义枚举值</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-6"> <a class="nav-link" href="#使用ns_enum和ns_options有以下几个好处"> <span class="nav-number">3.1</span> <span class="nav-text">使用NS_ENUM和NS_OPTIONS有以下几个好处:</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#在init时使用-ns_designated_initializer"> <span class="nav-number">4</span> <span class="nav-text">在init时使用 NS_DESIGNATED_INITIALIZER</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-6"> <a class="nav-link" href="#使用中的原则"> <span class="nav-number">4.1</span> <span class="nav-text">使用中的原则</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#nullability"> <span class="nav-number">5</span> <span class="nav-text">Nullability</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-6"> <a class="nav-link" href="#默认加nonnull修饰符的宏--audited-regions-"> <span class="nav-number">5.1</span> <span class="nav-text">默认加nonnull修饰符的宏 （ Audited Regions ）</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#轻量级泛型lightweight-generics"> <span class="nav-number">6</span> <span class="nav-text">轻量级泛型(Lightweight Generics)</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-6"> <a class="nav-link" href="#引申---自定义泛型类"> <span class="nav-number">6.1</span> <span class="nav-text">引申 - 自定义泛型类</span> </a> </li> <li class="nav-item nav-level-6"> <a class="nav-link" href="#引申---协变性和逆变性"> <span class="nav-number">6.2</span> <span class="nav-text">引申 - 协变性和逆变性</span> </a> </li> </ol> </li> <li class="nav-item nav-level-2"> <a class="nav-link" href="#__kindof-修饰符"> <span class="nav-number">7</span> <span class="nav-text">__kindof 修饰符</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Han Chow</span>
+</div>
+
+
+<div class="powered-by">
+  
+</div>
+
+<div class="theme-info">
+   -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
