@@ -4,9 +4,9 @@
 # ---------------------------------------------------------------
 
 # Site
-title: Han's Blog
-subtitle: To improve is to change,to perfect is to change often.
-description:
+title: Han Chow
+subtitle: 
+description: To improve is to change,to perfect is to change often.
 author: Han Chow
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: zhh-Hans
@@ -233,7 +233,7 @@ social_icons:
 
 # Sidebar Avatar
 # in directory: /assets/images/avatar.gif
-#avatar:
+avatar: /assets/images/avatar.png
 
 
 # Table Of Contents in the Sidebar
@@ -373,7 +373,7 @@ han: false
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: 115fef48c62e3ba51a36e5b946decaae
 
 # Duoshuo ShortName
 #duoshuo_shortname:
