@@ -1,26 +1,12 @@
 ---
 title: 前端 - About Sass/Scss
 tags: 
+ - Web
 ---
 
-# About Sass/Scss 
-
-### 参考
 
 
-
-- [阮一峰 - SASS用法指南](http://www.ruanyifeng.com/blog/2012/06/sass.html)
-- [Sass Basics](http://sass-lang.com/guide)
-- [官方转换器](http://www.sassmeister.com/)
-- [Another 转换器](http://css2sass.herokuapp.com/)
-- [W3 - Sass Guide](http://www.w3cplus.com/sassguide/)
-- [Sass基础教程](http://www.sasschina.com/guide/)
-- [sass十分钟入门](http://www.w3cplus.com/sassguide/)
-
-
----
-## 用法
-
+## 用法 
 
 
 #### Variables (变量)
@@ -344,3 +330,20 @@ $i: 6;
 　　}
 　　
 ```
+
+
+
+### 参考
+
+
+
+- [阮一峰 - SASS用法指南](http://www.ruanyifeng.com/blog/2012/06/sass.html)
+- [Sass Basics](http://sass-lang.com/guide)
+- [官方转换器](http://www.sassmeister.com/)
+- [Another 转换器](http://css2sass.herokuapp.com/)
+- [W3 - Sass Guide](http://www.w3cplus.com/sassguide/)
+- [Sass基础教程](http://www.sasschina.com/guide/)
+- [sass十分钟入门](http://www.w3cplus.com/sassguide/)
+
+
+---

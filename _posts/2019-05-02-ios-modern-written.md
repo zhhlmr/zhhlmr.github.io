@@ -1,23 +1,11 @@
 ---
 title: iOS - 一些现代化的Objective-C 写法
 tags: 
+ - iOS
 ---
 
 
 
-参考  
-
-1. [Next
-Adopting Modern Objective-C](https://developer.apple.com/library/content/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html)
-
-
-2. [正确编写Designated Initializer的几个原则](http://www.starfelix.com/blog/2014/04/13/zheng-que-bian-xie-designated-initializerde-ji-ge-yuan-ze/)
-
-3. [2015 Objective-C 新特性](http://blog.sunnyxx.com/2015/06/12/objc-new-features-in-2015/)
-4. [Nullability and Objective-C](https://developer.apple.com/swift/blog/?id=25)
-
-
----
 ## 构造方法中，返回值应使用instancetype，而不是id
 
 首先，我们来看看以下代码：
@@ -357,3 +345,19 @@ UIButton *button = (UIButton*) view.subviews.lastObject;
 
 UIButton *button = view.subviews.lastObject;
 ```
+
+---
+
+### 参考  
+
+1. [Next
+Adopting Modern Objective-C](https://developer.apple.com/library/content/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html)
+
+
+2. [正确编写Designated Initializer的几个原则](http://www.starfelix.com/blog/2014/04/13/zheng-que-bian-xie-designated-initializerde-ji-ge-yuan-ze/)
+
+3. [2015 Objective-C 新特性](http://blog.sunnyxx.com/2015/06/12/objc-new-features-in-2015/)
+4. [Nullability and Objective-C](https://developer.apple.com/swift/blog/?id=25)
+
+
+---

@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-02T22:59:16+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">Han Chow</title><subtitle>To improve is to change,to perfect is to change often.</subtitle><author><name>Han Chow</name></author><entry><title type="html">前端 - About Sass/Scss</title><link href="http://localhost:4000/2019/05/02/front-about-sass/" rel="alternate" type="text/html" title="前端 - About Sass/Scss" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/front-about-sass</id><content type="html" xml:base="http://localhost:4000/2019/05/02/front-about-sass/">&lt;h1 id=&quot;about-sassscss&quot;&gt;About Sass/Scss&lt;/h1&gt;
-
-&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/06/sass.html&quot;&gt;阮一峰 - SASS用法指南&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://sass-lang.com/guide&quot;&gt;Sass Basics&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.sassmeister.com/&quot;&gt;官方转换器&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://css2sass.herokuapp.com/&quot;&gt;Another 转换器&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.w3cplus.com/sassguide/&quot;&gt;W3 - Sass Guide&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.sasschina.com/guide/&quot;&gt;Sass基础教程&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.w3cplus.com/sassguide/&quot;&gt;sass十分钟入门&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;用法&quot;&gt;用法&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-02T23:11:34+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">Han Chow</title><subtitle>To improve is to change,to perfect is to change often.</subtitle><author><name>Han Chow</name></author><entry><title type="html">前端 - About Sass/Scss</title><link href="http://localhost:4000/2019/05/02/front-about-sass/" rel="alternate" type="text/html" title="前端 - About Sass/Scss" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/front-about-sass</id><content type="html" xml:base="http://localhost:4000/2019/05/02/front-about-sass/">&lt;h2 id=&quot;用法&quot;&gt;用法&lt;/h2&gt;
 
 &lt;h4 id=&quot;variables-变量&quot;&gt;Variables (变量)&lt;/h4&gt;
 
@@ -303,20 +288,21 @@ a:hover {
 　　　　width: double(5px);
 　　}
 　　
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Han Chow</name></author><summary type="html">About Sass/Scss</summary></entry><entry><title type="html">iOS - About ARC</title><link href="http://localhost:4000/2019/05/02/ios-arc/" rel="alternate" type="text/html" title="iOS - About ARC" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-arc</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-arc/">&lt;h1 id=&quot;ios---about-arc&quot;&gt;iOS - About ARC&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://segmentfault.com/q/1010000007223282&quot;&gt;Objective-C内存管理面试题一道&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://onevcat.com/2012/06/arc-hand-by-hand/&quot;&gt;喵神 - 手把手教你ARC——iOS/Mac开发ARC入门和使用&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/kubixuesheng/p/4314426.html&quot;&gt;objective-c 语法快速过（7）编译器特性ARC&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.raywenderlich.com/5677/beginning-arc-in-ios-5-part-1&quot;&gt;Raywenderlich - Beginning ARC in iOS 5 Tutorial Part 1&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/06/sass.html&quot;&gt;阮一峰 - SASS用法指南&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://sass-lang.com/guide&quot;&gt;Sass Basics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.sassmeister.com/&quot;&gt;官方转换器&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://css2sass.herokuapp.com/&quot;&gt;Another 转换器&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.w3cplus.com/sassguide/&quot;&gt;W3 - Sass Guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.sasschina.com/guide/&quot;&gt;Sass基础教程&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.w3cplus.com/sassguide/&quot;&gt;sass十分钟入门&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;什么是arc&quot;&gt;什么是ARC&lt;/h3&gt;
+&lt;hr /&gt;</content><author><name>Han Chow</name></author><category term="Web" /><summary type="html">用法</summary></entry><entry><title type="html">iOS - About ARC</title><link href="http://localhost:4000/2019/05/02/ios-arc/" rel="alternate" type="text/html" title="iOS - About ARC" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-arc</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-arc/">&lt;h3 id=&quot;什么是arc&quot;&gt;什么是ARC&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;ARC （Automatic Reference Counting ）自动引用计数。&lt;/li&gt;
@@ -370,7 +356,18 @@ a:hover {
 &lt;ul&gt;
   &lt;li&gt;ARC中依然可以加入retain 和 release，不可忘记内存管理，也要在合适的时候将指针置为nil。&lt;/li&gt;
   &lt;li&gt;在XCode中指定某些文件不需要ARC编译时，可以在Compiple Sources 中给指定的文件添加Compile Flags &lt;strong&gt;“-fno-objc-arc”&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Han Chow</name></author><summary type="html">iOS - About ARC</summary></entry><entry><title type="html">iOS - 关于Block</title><link href="http://localhost:4000/2019/05/02/ios-block/" rel="alternate" type="text/html" title="iOS - 关于Block" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-block</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-block/">&lt;h2 id=&quot;定义&quot;&gt;定义&lt;/h2&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://segmentfault.com/q/1010000007223282&quot;&gt;Objective-C内存管理面试题一道&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://onevcat.com/2012/06/arc-hand-by-hand/&quot;&gt;喵神 - 手把手教你ARC——iOS/Mac开发ARC入门和使用&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/kubixuesheng/p/4314426.html&quot;&gt;objective-c 语法快速过（7）编译器特性ARC&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.raywenderlich.com/5677/beginning-arc-in-ios-5-part-1&quot;&gt;Raywenderlich - Beginning ARC in iOS 5 Tutorial Part 1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html">什么是ARC</summary></entry><entry><title type="html">iOS - 关于Block</title><link href="http://localhost:4000/2019/05/02/ios-block/" rel="alternate" type="text/html" title="iOS - 关于Block" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-block</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-block/">&lt;h2 id=&quot;定义&quot;&gt;定义&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -1256,7 +1253,9 @@ block--&amp;gt;self
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;strongSelf is OK.
 tag is OK.
 TestBlockViewController dealloc.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Han Chow</name></author><summary type="html">定义</summary></entry><entry><title type="html">iOS - 一些常用的宏</title><link href="http://localhost:4000/2019/05/02/ios-marcos/" rel="alternate" type="text/html" title="iOS - 一些常用的宏" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-marcos</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-marcos/">&lt;h1 id=&quot;ios-一些常用的宏&quot;&gt;iOS 一些常用的宏&lt;/h1&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html">定义</summary></entry><entry><title type="html">iOS - 一些常用的宏</title><link href="http://localhost:4000/2019/05/02/ios-marcos/" rel="alternate" type="text/html" title="iOS - 一些常用的宏" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-marcos</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-marcos/">&lt;blockquote&gt;
+  &lt;p&gt;仅为本人项目中使用过的宏&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#define isStringNil(x)                              (nil == x || x.length &amp;lt;= 0)
 #define isArrayEmpty(x)                             (nil == x || x.count &amp;lt;= 0)
@@ -1357,22 +1356,7 @@ TestBlockViewController dealloc.
 #define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
 #define kEndTime   NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Han Chow</name></author><summary type="html">iOS 一些常用的宏</summary></entry><entry><title type="html">iOS - 一些现代化的Objective-C 写法</title><link href="http://localhost:4000/2019/05/02/ios-modern-written/" rel="alternate" type="text/html" title="iOS - 一些现代化的Objective-C 写法" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-modern-written</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-modern-written/">&lt;p&gt;参考&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html&quot;&gt;Next
-Adopting Modern Objective-C&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://www.starfelix.com/blog/2014/04/13/zheng-que-bian-xie-designated-initializerde-ji-ge-yuan-ze/&quot;&gt;正确编写Designated Initializer的几个原则&lt;/a&gt;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;http://blog.sunnyxx.com/2015/06/12/objc-new-features-in-2015/&quot;&gt;2015 Objective-C 新特性&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/swift/blog/?id=25&quot;&gt;Nullability and Objective-C&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;hr /&gt;
-&lt;h2 id=&quot;构造方法中返回值应使用instancetype而不是id&quot;&gt;构造方法中，返回值应使用instancetype，而不是id&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html">仅为本人项目中使用过的宏</summary></entry><entry><title type="html">iOS - 一些现代化的Objective-C 写法</title><link href="http://localhost:4000/2019/05/02/ios-modern-written/" rel="alternate" type="text/html" title="iOS - 一些现代化的Objective-C 写法" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-modern-written</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-modern-written/">&lt;h2 id=&quot;构造方法中返回值应使用instancetype而不是id&quot;&gt;构造方法中，返回值应使用instancetype，而不是id&lt;/h2&gt;
 
 &lt;p&gt;首先，我们来看看以下代码：&lt;/p&gt;
 
@@ -1704,18 +1688,36 @@ UIButton *button = (UIButton*) view.subviews.lastObject;
 //编译器不会提示
 
 UIButton *button = view.subviews.lastObject;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Han Chow</name></author><summary type="html">参考</summary></entry><entry><title type="html">iOS - Runtime 消息转发机制示意图</title><link href="http://localhost:4000/2019/05/02/ios-runtime/" rel="alternate" type="text/html" title="iOS - Runtime 消息转发机制示意图" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-runtime</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-runtime/">&lt;h3 id=&quot;参考&quot;&gt;参考:&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;http://gold.xitu.io/post/57e7e10a128fe100570d876d&lt;/li&gt;
-  &lt;li&gt;http://yulingtianxia.com/blog/2016/06/15/Objective-C-Message-Sending-and-Forwarding/&lt;/li&gt;
-  &lt;li&gt;http://arigrant.com/blog/2013/12/13/a-selector-left-unhandled&lt;/li&gt;
-  &lt;li&gt;http://arigrant.com/blog/2014/2/12/why-objcmsgsend-must-be-written-in-assembly&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;简化版&quot;&gt;简化版：&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/content/releasenotes/ObjectiveC/ModernizationObjC/AdoptingModernObjective-C/AdoptingModernObjective-C.html&quot;&gt;Next
+Adopting Modern Objective-C&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.starfelix.com/blog/2014/04/13/zheng-que-bian-xie-designated-initializerde-ji-ge-yuan-ze/&quot;&gt;正确编写Designated Initializer的几个原则&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.sunnyxx.com/2015/06/12/objc-new-features-in-2015/&quot;&gt;2015 Objective-C 新特性&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/swift/blog/?id=25&quot;&gt;Nullability and Objective-C&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html">构造方法中，返回值应使用instancetype，而不是id</summary></entry><entry><title type="html">iOS - Runtime 消息转发机制示意图</title><link href="http://localhost:4000/2019/05/02/ios-runtime/" rel="alternate" type="text/html" title="iOS - Runtime 消息转发机制示意图" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-runtime</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-runtime/">&lt;h3 id=&quot;简化版&quot;&gt;简化版：&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/05/02/5ccb04f368b77.png&quot; alt=&quot;ios-runtime-simpe.png&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;详细版&quot;&gt;详细版:&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/05/02/5ccb05bb8c013.jpg&quot; alt=&quot;ios-runtime-detail.jpg&quot; /&gt;&lt;/p&gt;</content><author><name>Han Chow</name></author><summary type="html">参考: http://gold.xitu.io/post/57e7e10a128fe100570d876d http://yulingtianxia.com/blog/2016/06/15/Objective-C-Message-Sending-and-Forwarding/ http://arigrant.com/blog/2013/12/13/a-selector-left-unhandled http://arigrant.com/blog/2014/2/12/why-objcmsgsend-must-be-written-in-assembly</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/05/02/5ccb05bb8c013.jpg&quot; alt=&quot;ios-runtime-detail.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考:&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;http://gold.xitu.io/post/57e7e10a128fe100570d876d&lt;/li&gt;
+  &lt;li&gt;http://yulingtianxia.com/blog/2016/06/15/Objective-C-Message-Sending-and-Forwarding/&lt;/li&gt;
+  &lt;li&gt;http://arigrant.com/blog/2013/12/13/a-selector-left-unhandled&lt;/li&gt;
+  &lt;li&gt;http://arigrant.com/blog/2014/2/12/why-objcmsgsend-must-be-written-in-assembly&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html">简化版：</summary></entry></feed>
