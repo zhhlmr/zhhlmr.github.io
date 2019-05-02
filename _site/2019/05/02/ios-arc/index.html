@@ -111,18 +111,18 @@
 
 
 
-<meta name="description" content="什么是ARC">
+<meta name="description" content="什么是ARC ARC （Automatic Reference Counting ）自动引用计数。 ARC是LLVM 3.0 编译器的特性。 （ 不是运行时特性，也不是垃圾回收机制） ARC开启时，编译器会自动在代码合适的地方插入 retain ,release 和 autorelease ARC工作原理 编译器会自动在代码合适的地方插入 retain ,release 和 autorelease ARC机制 Strong 只要一个对象被任一strong指针指向，那该对象不会被销毁。如果一个对象没有被任何strong指针指向，那该对象会被销毁。 所有的实例变量、局部变量都是strong类型。 Weak 当weak指针指向的对象被销毁后，weak指针会被置为nil。 strong 和 weak 指针都不会指向一个deallocted的对象。 实际应用 ViewController 与 TableView @property 中的 strong &amp;amp; weak 相当于MRC时的retain 和 assign 注意事项 ARC中依然可以加入retain 和 release，不可忘记内存管理，也要在合适的时候将指针置为nil。 在XCode中指定某些文件不需要ARC编译时，可以在Compiple Sources 中给指定的文件添加Compile Flags “-fno-objc-arc” 参考 Objective-C内存管理面试题一道 喵神 - 手把手教你ARC——iOS/Mac开发ARC入门和使用 objective-c 语法快速过（7）编译器特性ARC Raywenderlich - Beginning ARC in iOS 5 Tutorial Part 1">
 <meta name="keywords" content="iOS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS - About ARC">
 <meta property="og:url" content="http://localhost:4000/2019/05/02/ios-arc/">
 <meta property="og:site_name" content="Han Chow">
-<meta property="og:description" content="什么是ARC">
+<meta property="og:description" content="什么是ARC ARC （Automatic Reference Counting ）自动引用计数。 ARC是LLVM 3.0 编译器的特性。 （ 不是运行时特性，也不是垃圾回收机制） ARC开启时，编译器会自动在代码合适的地方插入 retain ,release 和 autorelease ARC工作原理 编译器会自动在代码合适的地方插入 retain ,release 和 autorelease ARC机制 Strong 只要一个对象被任一strong指针指向，那该对象不会被销毁。如果一个对象没有被任何strong指针指向，那该对象会被销毁。 所有的实例变量、局部变量都是strong类型。 Weak 当weak指针指向的对象被销毁后，weak指针会被置为nil。 strong 和 weak 指针都不会指向一个deallocted的对象。 实际应用 ViewController 与 TableView @property 中的 strong &amp;amp; weak 相当于MRC时的retain 和 assign 注意事项 ARC中依然可以加入retain 和 release，不可忘记内存管理，也要在合适的时候将指针置为nil。 在XCode中指定某些文件不需要ARC编译时，可以在Compiple Sources 中给指定的文件添加Compile Flags “-fno-objc-arc” 参考 Objective-C内存管理面试题一道 喵神 - 手把手教你ARC——iOS/Mac开发ARC入门和使用 objective-c 语法快速过（7）编译器特性ARC Raywenderlich - Beginning ARC in iOS 5 Tutorial Part 1">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://onevcat.com/assets/images/2012/arcpic7.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS - About ARC">
-<meta name="twitter:description" content="什么是ARC">
+<meta name="twitter:description" content="什么是ARC ARC （Automatic Reference Counting ）自动引用计数。 ARC是LLVM 3.0 编译器的特性。 （ 不是运行时特性，也不是垃圾回收机制） ARC开启时，编译器会自动在代码合适的地方插入 retain ,release 和 autorelease ARC工作原理 编译器会自动在代码合适的地方插入 retain ,release 和 autorelease ARC机制 Strong 只要一个对象被任一strong指针指向，那该对象不会被销毁。如果一个对象没有被任何strong指针指向，那该对象会被销毁。 所有的实例变量、局部变量都是strong类型。 Weak 当weak指针指向的对象被销毁后，weak指针会被置为nil。 strong 和 weak 指针都不会指向一个deallocted的对象。 实际应用 ViewController 与 TableView @property 中的 strong &amp;amp; weak 相当于MRC时的retain 和 assign 注意事项 ARC中依然可以加入retain 和 release，不可忘记内存管理，也要在合适的时候将指针置为nil。 在XCode中指定某些文件不需要ARC编译时，可以在Compiple Sources 中给指定的文件添加Compile Flags “-fno-objc-arc” 参考 Objective-C内存管理面试题一道 喵神 - 手把手教你ARC——iOS/Mac开发ARC入门和使用 objective-c 语法快速过（7）编译器特性ARC Raywenderlich - Beginning ARC in iOS 5 Tutorial Part 1">
 <meta name="twitter:image" content="https://onevcat.com/assets/images/2012/arcpic7.png">
 
 
