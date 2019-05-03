@@ -83,7 +83,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="iOS," />
+  <meta name="keywords" content="Web," />
 
 
 
@@ -111,20 +111,19 @@
 
 
 
-<meta name="description" content="简化版： 详细版: 参考: http://gold.xitu.io/post/57e7e10a128fe100570d876d http://yulingtianxia.com/blog/2016/06/15/Objective-C-Message-Sending-and-Forwarding/ http://arigrant.com/blog/2013/12/13/a-selector-left-unhandled http://arigrant.com/blog/2014/2/12/why-objcmsgsend-must-be-written-in-assembly">
-<meta name="keywords" content="iOS">
+<meta name="description" content="ECMAScript中的数据类型: 原始类型： Undefined、Null、Boolean、Number 、 String、Symbol(ECMAScript 6 新定义，类似于C中的枚举类型) 复杂数据类型：Objet null 是 Object undefined == null //true (undefined 派生自null) 0 == ‘’ // true [] == false // true 最初设计中，null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。 null表示”没有对象”，即该处不应该有值 undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义 null 可理解为一个空指针，尚未指向任何对象。 判断变量是否为undefined : 使用 === 或者 !== , 当使用普通相等符== 时，会同时检查是否等于null 使用typeof操作符 判断变量是否为null: 使用 === 或者 !== 不可使用typeof ， typeof null == ‘object’ // true void 运算符 对给定的表达式进行求值，然后返回 undefined if (!undefined) console.log(&apos;undefined is false&apos;); // undefined is false if (!null) console.log(&apos;null is false&apos;); // null is false undefined == null // true Object.getPrototypeOf(Object.prototype) // null var i; i // undefined function f(x){console.log(x)} f() // undefined var o = new Object(); o.p // undefined var x = f(); x // undefined var value; console.log(typeof data); // &quot;undefined&quot; console.log(typeof value); // &quot;undefined&quot; console.log(data === undefined); //error var data; console.log(data === void 0); //true 参考 阮一峰: undefined与null 的区别 JavaScript深入理解之undefined与null 探索JavaScript中Null和Undefined的深渊">
+<meta name="keywords" content="Web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS - Runtime 消息转发机制示意图">
-<meta property="og:url" content="http://localhost:4000/2019/05/01/ios-runtime/">
+<meta property="og:title" content="Javascript - 关于 null, undefined, 0, [], true, false, void">
+<meta property="og:url" content="http://localhost:4000/2019/05/04/front-js-null-undefined/">
 <meta property="og:site_name" content="Han Chow">
-<meta property="og:description" content="简化版： 详细版: 参考: http://gold.xitu.io/post/57e7e10a128fe100570d876d http://yulingtianxia.com/blog/2016/06/15/Objective-C-Message-Sending-and-Forwarding/ http://arigrant.com/blog/2013/12/13/a-selector-left-unhandled http://arigrant.com/blog/2014/2/12/why-objcmsgsend-must-be-written-in-assembly">
+<meta property="og:description" content="ECMAScript中的数据类型: 原始类型： Undefined、Null、Boolean、Number 、 String、Symbol(ECMAScript 6 新定义，类似于C中的枚举类型) 复杂数据类型：Objet null 是 Object undefined == null //true (undefined 派生自null) 0 == ‘’ // true [] == false // true 最初设计中，null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。 null表示”没有对象”，即该处不应该有值 undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义 null 可理解为一个空指针，尚未指向任何对象。 判断变量是否为undefined : 使用 === 或者 !== , 当使用普通相等符== 时，会同时检查是否等于null 使用typeof操作符 判断变量是否为null: 使用 === 或者 !== 不可使用typeof ， typeof null == ‘object’ // true void 运算符 对给定的表达式进行求值，然后返回 undefined if (!undefined) console.log(&apos;undefined is false&apos;); // undefined is false if (!null) console.log(&apos;null is false&apos;); // null is false undefined == null // true Object.getPrototypeOf(Object.prototype) // null var i; i // undefined function f(x){console.log(x)} f() // undefined var o = new Object(); o.p // undefined var x = f(); x // undefined var value; console.log(typeof data); // &quot;undefined&quot; console.log(typeof value); // &quot;undefined&quot; console.log(data === undefined); //error var data; console.log(data === void 0); //true 参考 阮一峰: undefined与null 的区别 JavaScript深入理解之undefined与null 探索JavaScript中Null和Undefined的深渊">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.loli.net/2019/05/02/5ccb04f368b77.png">
-<meta property="og:image" content="https://i.loli.net/2019/05/02/5ccb05bb8c013.jpg">
+<meta property="og:image" content="https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS - Runtime 消息转发机制示意图">
-<meta name="twitter:description" content="简化版： 详细版: 参考: http://gold.xitu.io/post/57e7e10a128fe100570d876d http://yulingtianxia.com/blog/2016/06/15/Objective-C-Message-Sending-and-Forwarding/ http://arigrant.com/blog/2013/12/13/a-selector-left-unhandled http://arigrant.com/blog/2014/2/12/why-objcmsgsend-must-be-written-in-assembly">
-<meta name="twitter:image" content="https://i.loli.net/2019/05/02/5ccb04f368b77.png">
+<meta name="twitter:title" content="Javascript - 关于 null, undefined, 0, [], true, false, void">
+<meta name="twitter:description" content="ECMAScript中的数据类型: 原始类型： Undefined、Null、Boolean、Number 、 String、Symbol(ECMAScript 6 新定义，类似于C中的枚举类型) 复杂数据类型：Objet null 是 Object undefined == null //true (undefined 派生自null) 0 == ‘’ // true [] == false // true 最初设计中，null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。 null表示”没有对象”，即该处不应该有值 undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义 null 可理解为一个空指针，尚未指向任何对象。 判断变量是否为undefined : 使用 === 或者 !== , 当使用普通相等符== 时，会同时检查是否等于null 使用typeof操作符 判断变量是否为null: 使用 === 或者 !== 不可使用typeof ， typeof null == ‘object’ // true void 运算符 对给定的表达式进行求值，然后返回 undefined if (!undefined) console.log(&apos;undefined is false&apos;); // undefined is false if (!null) console.log(&apos;null is false&apos;); // null is false undefined == null // true Object.getPrototypeOf(Object.prototype) // null var i; i // undefined function f(x){console.log(x)} f() // undefined var o = new Object(); o.p // undefined var x = f(); x // undefined var value; console.log(typeof data); // &quot;undefined&quot; console.log(typeof value); // &quot;undefined&quot; console.log(data === undefined); //error var data; console.log(data === void 0); //true 参考 阮一峰: undefined与null 的区别 JavaScript深入理解之undefined与null 探索JavaScript中Null和Undefined的深渊">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -157,7 +156,7 @@
 
 
 
-  <title>iOS - Runtime 消息转发机制示意图 | Han Chow</title>
+  <title>Javascript - 关于 null, undefined, 0, [], true, false, void | Han Chow</title>
   
 
 
@@ -305,7 +304,7 @@
   
 
   <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2019/05/01/ios-runtime/">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2019/05/04/front-js-null-undefined/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Han Chow">
@@ -325,7 +324,7 @@
           <h1 class="post-title" itemprop="name headline">
           
           
-            iOS - Runtime 消息转发机制示意图
+            Javascript - 关于 null, undefined, 0, [], true, false, void
           
         </h1>
         
@@ -339,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-01T00:00:00+08:00">
-                2019-05-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-04T00:00:00+08:00">
+                2019-05-04
               </time>
             
 
@@ -395,20 +394,81 @@
 
 
 
-  <h3 id="简化版">简化版：</h3>
+  <p><img src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" alt="cover" /></p>
 
-<p><img src="https://i.loli.net/2019/05/02/5ccb04f368b77.png" alt="ios-runtime-simpe.png" /></p>
-
-<h3 id="详细版">详细版:</h3>
-
-<p><img src="https://i.loli.net/2019/05/02/5ccb05bb8c013.jpg" alt="ios-runtime-detail.jpg" /></p>
-
-<h3 id="参考">参考:</h3>
 <ul>
-  <li>http://gold.xitu.io/post/57e7e10a128fe100570d876d</li>
-  <li>http://yulingtianxia.com/blog/2016/06/15/Objective-C-Message-Sending-and-Forwarding/</li>
-  <li>http://arigrant.com/blog/2013/12/13/a-selector-left-unhandled</li>
-  <li>http://arigrant.com/blog/2014/2/12/why-objcmsgsend-must-be-written-in-assembly</li>
+  <li>ECMAScript中的数据类型:
+    <ul>
+      <li>原始类型： Undefined、Null、Boolean、Number 、 String、<a href="https://developer.mozilla.org/en-US/docs/Glossary/Symbol">Symbol</a>(ECMAScript 6 新定义，类似于C中的枚举类型)</li>
+      <li>复杂数据类型：Objet</li>
+    </ul>
+  </li>
+  <li>null 是 Object</li>
+  <li>undefined == null //true (undefined 派生自null)</li>
+  <li>0 == ‘’ // true</li>
+  <li>[] == false // true</li>
+  <li>最初设计中，null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。</li>
+  <li><strong>null表示”没有对象”，即该处不应该有值</strong></li>
+  <li><strong>undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义</strong></li>
+  <li>null  可理解为一个空指针，尚未指向任何对象。</li>
+  <li>判断变量是否为undefined  :
+    <ul>
+      <li>使用 === 或者 !== , 当使用普通相等符== 时，会同时检查是否等于null</li>
+      <li>使用typeof操作符</li>
+    </ul>
+  </li>
+  <li>判断变量是否为null:
+    <ul>
+      <li>使用 === 或者 !==</li>
+      <li>不可使用typeof ， typeof null == ‘object’ // true</li>
+    </ul>
+  </li>
+  <li>void 运算符 对给定的表达式进行求值，然后返回 undefined</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35</pre></td><td class="code"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="kc">undefined</span><span class="p">)</span> 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'undefined is false'</span><span class="p">);</span>
+<span class="c1">// undefined is false</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="kc">null</span><span class="p">)</span> 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'null is false'</span><span class="p">);</span>
+<span class="c1">// null is false</span>
+
+<span class="kc">undefined</span> <span class="o">==</span> <span class="kc">null</span>
+<span class="c1">// true</span>
+
+<span class="nb">Object</span><span class="p">.</span><span class="nx">getPrototypeOf</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span>
+<span class="c1">// null</span>
+
+<span class="kd">var</span> <span class="nx">i</span><span class="p">;</span>
+<span class="nx">i</span> <span class="c1">// undefined</span>
+
+<span class="kd">function</span> <span class="nx">f</span><span class="p">(</span><span class="nx">x</span><span class="p">){</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">)}</span>
+<span class="nx">f</span><span class="p">()</span> <span class="c1">// undefined</span>
+
+<span class="kd">var</span>  <span class="nx">o</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Object</span><span class="p">();</span>
+<span class="nx">o</span><span class="p">.</span><span class="nx">p</span> <span class="c1">// undefined</span>
+
+<span class="kd">var</span> <span class="nx">x</span> <span class="o">=</span> <span class="nx">f</span><span class="p">();</span>
+<span class="nx">x</span> <span class="c1">// undefined</span>
+
+<span class="kd">var</span> <span class="nx">value</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">data</span><span class="p">);</span> <span class="c1">// "undefined"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">value</span><span class="p">);</span> <span class="c1">// "undefined"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">);</span> <span class="c1">//error</span>
+
+
+<span class="kd">var</span> <span class="nx">data</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span> <span class="o">===</span> <span class="k">void</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">//true</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<h4 id="参考">参考</h4>
+
+<ul>
+  <li><a href="[http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html)">阮一峰: undefined与null 的区别</a></li>
+  <li><a href="https://juejin.im/post/5aa4f7cc518825557e780256">JavaScript深入理解之undefined与null</a></li>
+  <li><a href="https://yanhaijing.com/javascript/2014/01/05/exploring-the-abyss-of-null-and-undefined-in-javascript/">探索JavaScript中Null和Undefined的深渊</a></li>
 </ul>
 
 
@@ -442,7 +502,7 @@
         <div class="post-tags">
           
             
-            <a href="/tag/#/iOS" rel="tag"># iOS</a>
+            <a href="/tag/#/Web" rel="tag"># Web</a>
           
         </div>
       
@@ -458,15 +518,15 @@
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/02/ios-arc/" rel="next" title="iOS - About ARC">
-                <i class="fa fa-chevron-left"></i> iOS - About ARC
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/03/front-about-sass/" rel="prev" title="前端 - About Sass/Scss">
+                前端 - About Sass/Scss <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -629,7 +689,7 @@
             
               <div class="post-toc-content">
     <ol class=nav>
-      <li class="nav-item nav-level-3"> <a class="nav-link" href="#简化版"> <span class="nav-number">1</span> <span class="nav-text">简化版：</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#详细版"> <span class="nav-number">2</span> <span class="nav-text">详细版:</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#参考"> <span class="nav-number">3</span> <span class="nav-text">参考:</span> </a> </li>
+      <li class="nav-item nav-level-4"> <a class="nav-link" href="#参考"> <span class="nav-number">1</span> <span class="nav-text">参考</span> </a> </li>
     </ol>
   </div>
             
