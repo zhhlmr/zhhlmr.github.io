@@ -8,6 +8,7 @@ tags:
 
 ![ios-runtime-simpe.png](https://i.loli.net/2019/05/02/5ccb04f368b77.png)
 
+<!-- more -->
 
 ### 详细版:
 

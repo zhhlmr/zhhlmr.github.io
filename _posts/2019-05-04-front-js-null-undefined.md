@@ -6,6 +6,7 @@ tags:
 
 ![cover](https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)
 
+<!-- more -->
 
 - ECMAScript中的数据类型: 
   - 原始类型： Undefined、Null、Boolean、Number 、 String、[Symbol](https://developer.mozilla.org/en-US/docs/Glossary/Symbol)(ECMAScript 6 新定义，类似于C中的枚举类型)

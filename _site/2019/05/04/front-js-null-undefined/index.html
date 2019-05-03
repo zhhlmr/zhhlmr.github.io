@@ -111,18 +111,18 @@
 
 
 
-<meta name="description" content="ECMAScript中的数据类型: 原始类型： Undefined、Null、Boolean、Number 、 String、Symbol(ECMAScript 6 新定义，类似于C中的枚举类型) 复杂数据类型：Objet null 是 Object undefined == null //true (undefined 派生自null) 0 == ‘’ // true [] == false // true 最初设计中，null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。 null表示”没有对象”，即该处不应该有值 undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义 null 可理解为一个空指针，尚未指向任何对象。 判断变量是否为undefined : 使用 === 或者 !== , 当使用普通相等符== 时，会同时检查是否等于null 使用typeof操作符 判断变量是否为null: 使用 === 或者 !== 不可使用typeof ， typeof null == ‘object’ // true void 运算符 对给定的表达式进行求值，然后返回 undefined if (!undefined) console.log(&apos;undefined is false&apos;); // undefined is false if (!null) console.log(&apos;null is false&apos;); // null is false undefined == null // true Object.getPrototypeOf(Object.prototype) // null var i; i // undefined function f(x){console.log(x)} f() // undefined var o = new Object(); o.p // undefined var x = f(); x // undefined var value; console.log(typeof data); // &quot;undefined&quot; console.log(typeof value); // &quot;undefined&quot; console.log(data === undefined); //error var data; console.log(data === void 0); //true 参考 阮一峰: undefined与null 的区别 JavaScript深入理解之undefined与null 探索JavaScript中Null和Undefined的深渊">
+<meta name="description" content="">
 <meta name="keywords" content="Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript - 关于 null, undefined, 0, [], true, false, void">
 <meta property="og:url" content="http://localhost:4000/2019/05/04/front-js-null-undefined/">
 <meta property="og:site_name" content="Han Chow">
-<meta property="og:description" content="ECMAScript中的数据类型: 原始类型： Undefined、Null、Boolean、Number 、 String、Symbol(ECMAScript 6 新定义，类似于C中的枚举类型) 复杂数据类型：Objet null 是 Object undefined == null //true (undefined 派生自null) 0 == ‘’ // true [] == false // true 最初设计中，null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。 null表示”没有对象”，即该处不应该有值 undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义 null 可理解为一个空指针，尚未指向任何对象。 判断变量是否为undefined : 使用 === 或者 !== , 当使用普通相等符== 时，会同时检查是否等于null 使用typeof操作符 判断变量是否为null: 使用 === 或者 !== 不可使用typeof ， typeof null == ‘object’ // true void 运算符 对给定的表达式进行求值，然后返回 undefined if (!undefined) console.log(&apos;undefined is false&apos;); // undefined is false if (!null) console.log(&apos;null is false&apos;); // null is false undefined == null // true Object.getPrototypeOf(Object.prototype) // null var i; i // undefined function f(x){console.log(x)} f() // undefined var o = new Object(); o.p // undefined var x = f(); x // undefined var value; console.log(typeof data); // &quot;undefined&quot; console.log(typeof value); // &quot;undefined&quot; console.log(data === undefined); //error var data; console.log(data === void 0); //true 参考 阮一峰: undefined与null 的区别 JavaScript深入理解之undefined与null 探索JavaScript中Null和Undefined的深渊">
+<meta property="og:description" content="">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript - 关于 null, undefined, 0, [], true, false, void">
-<meta name="twitter:description" content="ECMAScript中的数据类型: 原始类型： Undefined、Null、Boolean、Number 、 String、Symbol(ECMAScript 6 新定义，类似于C中的枚举类型) 复杂数据类型：Objet null 是 Object undefined == null //true (undefined 派生自null) 0 == ‘’ // true [] == false // true 最初设计中，null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。 null表示”没有对象”，即该处不应该有值 undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义 null 可理解为一个空指针，尚未指向任何对象。 判断变量是否为undefined : 使用 === 或者 !== , 当使用普通相等符== 时，会同时检查是否等于null 使用typeof操作符 判断变量是否为null: 使用 === 或者 !== 不可使用typeof ， typeof null == ‘object’ // true void 运算符 对给定的表达式进行求值，然后返回 undefined if (!undefined) console.log(&apos;undefined is false&apos;); // undefined is false if (!null) console.log(&apos;null is false&apos;); // null is false undefined == null // true Object.getPrototypeOf(Object.prototype) // null var i; i // undefined function f(x){console.log(x)} f() // undefined var o = new Object(); o.p // undefined var x = f(); x // undefined var value; console.log(typeof data); // &quot;undefined&quot; console.log(typeof value); // &quot;undefined&quot; console.log(data === undefined); //error var data; console.log(data === void 0); //true 参考 阮一峰: undefined与null 的区别 JavaScript深入理解之undefined与null 探索JavaScript中Null和Undefined的深渊">
+<meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80">
 
 
@@ -395,6 +395,8 @@
 
 
   <p><img src="https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" alt="cover" /></p>
+
+<!-- more -->
 
 <ul>
   <li>ECMAScript中的数据类型:
