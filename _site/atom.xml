@@ -1,4 +1,125 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-04T08:16:24+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">JumpC</title><subtitle>To improve is to change,to perfect is to change often.</subtitle><author><name>JumpC</name></author><entry><title type="html">Javascript - 关于 apply, call, bind, this</title><link href="http://localhost:4000/2019/05/04/front-apply-call-bind/" rel="alternate" type="text/html" title="Javascript - 关于 apply, call, bind, this" /><published>2019-05-04T00:00:00+08:00</published><updated>2019-05-04T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/04/front-apply-call-bind</id><content type="html" xml:base="http://localhost:4000/2019/05/04/front-apply-call-bind/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1555999017-0d0f80510719?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-04T08:54:20+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">JumpC</title><subtitle>To improve is to change,to perfect is to change often.</subtitle><author><name>JumpC</name></author><entry><title type="html">Javascript - 关于 Cookie、Session、Localstorage</title><link href="http://localhost:4000/2019/05/04/front-cookie-session-localstorage/" rel="alternate" type="text/html" title="Javascript - 关于 Cookie、Session、Localstorage" /><published>2019-05-04T00:00:00+08:00</published><updated>2019-05-04T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/04/front-cookie-session-localstorage</id><content type="html" xml:base="http://localhost:4000/2019/05/04/front-cookie-session-localstorage/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1556468282-52b7aa97e00a?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h3 id=&quot;cookiesessionlocalstorage&quot;&gt;Cookie、Session、Localstorage&lt;/h3&gt;
+
+&lt;h4 id=&quot;cookie&quot;&gt;Cookie：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“小饼干” - 即其存储大小很小，仅为4K&lt;/li&gt;
+  &lt;li&gt;主要用途为 保存登录信息、用户状态等，并用以记录页面或浏览器关闭刷新之后仍需记录保存的数据&lt;/li&gt;
+  &lt;li&gt;查看方式：document.cookie&lt;/li&gt;
+  &lt;li&gt;通常由Server 生成(Set-cookie)，可设置失效时间。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;在同源http请求中是始终会携带着的&lt;/strong&gt;，一定程度上影响请求速度。&lt;/li&gt;
+  &lt;li&gt;Client中可以访问修改。以字符串的方式保存在客户端。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;cookie的用法&quot;&gt;Cookie的用法：&lt;/h4&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;//Server设置发送的HTTP头：
+Set-Cookie: &lt;span class=&quot;nt&quot;&gt;&amp;lt;cookie-name&amp;gt;&lt;/span&gt;=&lt;span class=&quot;nt&quot;&gt;&amp;lt;cookie-value&amp;gt;&lt;/span&gt;;(可选参数1);(可选参数2)
+
+//Client设置Cookie:
+document.cookie = &quot;&lt;span class=&quot;nt&quot;&gt;&amp;lt;cookie-name&amp;gt;&lt;/span&gt;=&lt;span class=&quot;nt&quot;&gt;&amp;lt;cookie-value&amp;gt;&lt;/span&gt;;(可选参数1);(可选参数2)&quot;
+
+//可选参数有：
+Expires=&lt;span class=&quot;nt&quot;&gt;&amp;lt;date&amp;gt;&lt;/span&gt;：cookie的最长有效时间，若不设置则cookie生命期与会话期相同
+Max-Age=&lt;span class=&quot;nt&quot;&gt;&amp;lt;non-zero-digit&amp;gt;&lt;/span&gt;：cookie生成后失效的秒数
+Domain=&lt;span class=&quot;nt&quot;&gt;&amp;lt;domain-value&amp;gt;&lt;/span&gt;：指定cookie可以送达的主机域名，若一级域名设置了则二级域名也能获取。
+Path=&lt;span class=&quot;nt&quot;&gt;&amp;lt;path-value&amp;gt;&lt;/span&gt;：指定一个URL，例如指定path=/docs，则”/docs”、”/docs/Web/“、”/docs/Web/Http”均满足匹配条件
+Secure：必须在请求使用SSL或HTTPS协议的时候cookie才回被发送到服务器
+HttpOnly：客户端无法更改Cookie，客户端设置cookie时不能使用这个参数，一般是服务器端使用
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;session&quot;&gt;Session:&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;大小为5MB&lt;/li&gt;
+  &lt;li&gt;在无状态的HTTP协议下，服务端记录用户状态时用于标识具体用户的机制&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;会话级别的存储，也就是说&lt;strong&gt;仅在当前会话下有效，关闭页面或浏览器后被清除&lt;/strong&gt;(因刷新后session_id改变了)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;一定时间内存储在Server中，访问增多时，会影响Server性能。&lt;/li&gt;
+  &lt;li&gt;服务器使用Session过程：
+    &lt;ul&gt;
+      &lt;li&gt;检查Client请求中是否有session_id, 有则查找相关信息，无则创建(不重复的session_id)&lt;/li&gt;
+      &lt;li&gt;session_id 加载cookie中，并在响应请求中返回给Client保存&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;以对象的方式保存在服务器端。&lt;/li&gt;
+  &lt;li&gt;当客户端禁止cookie时，可url中传递session_id(sid=xxxx)，由此仍可以判断是哪个用户，而不需要客户端的信息。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;localstorage&quot;&gt;Localstorage&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;大小为5MB甚至更大&lt;/li&gt;
+  &lt;li&gt;可永久保存在客户端中，除非手动删除&lt;/li&gt;
+  &lt;li&gt;不参与与服务器的通信/请求&lt;/li&gt;
+  &lt;li&gt;相比于cookie ，拥有更好的API接口(removeItem,setItem,clear)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;三者的区别&quot;&gt;三者的区别：&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;特性&lt;/th&gt;
+      &lt;th&gt;Cookie&lt;/th&gt;
+      &lt;th&gt;localStorage&lt;/th&gt;
+      &lt;th&gt;sessionStorage&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;数据的生命期&lt;/td&gt;
+      &lt;td&gt;一般由服务器生成，可设置失效时间。如果在浏览器端生成Cookie，默认是关闭浏览器后失效&lt;/td&gt;
+      &lt;td&gt;除非被清除，否则永久保存&lt;/td&gt;
+      &lt;td&gt;仅在当前会话下有效，关闭页面或浏览器后被清除&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;存放数据大小&lt;/td&gt;
+      &lt;td&gt;4K左右&lt;/td&gt;
+      &lt;td&gt;一般为5MB&lt;/td&gt;
+      &lt;td&gt;一般为5MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;与服务器端通信&lt;/td&gt;
+      &lt;td&gt;每次都会携带在HTTP头中，如果使用cookie保存过多数据会带来性能问题&lt;/td&gt;
+      &lt;td&gt;仅在客户端（即浏览器）中保存，不参与和服务器的通信&lt;/td&gt;
+      &lt;td&gt;仅在客户端（即浏览器）中保存，不参与和服务器的通信&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;易用性&lt;/td&gt;
+      &lt;td&gt;需要程序员自己封装，源生的Cookie接口不友好&lt;/td&gt;
+      &lt;td&gt;源生接口可以接受，亦可再次封装来对Object和Array有更好的支持&lt;/td&gt;
+      &lt;td&gt;源生接口可以接受，亦可再次封装来对Object和Array有更好的支持&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;存储方式&lt;/td&gt;
+      &lt;td&gt;键值对&lt;/td&gt;
+      &lt;td&gt;键值对&lt;/td&gt;
+      &lt;td&gt;键值对&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;使用场景&quot;&gt;使用场景：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;可用cookie 来记录用户简单的登录信息&lt;/li&gt;
+  &lt;li&gt;可用seesion来记录用户多个表单或多个页面连续性填写的信息。&lt;/li&gt;
+  &lt;li&gt;可用localstorag 来存储用户其他大型数据，例如购物车、收藏等信息。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;参考&quot;&gt;参考：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jerryzou.com/posts/cookie-and-web-storage/&quot;&gt;详说 Cookie, LocalStorage 与 SessionStorage&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://juejin.im/entry/5ac4d661f265da23a049c92a&quot;&gt;细说localStorage, sessionStorage, Cookie, Session&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.jianshu.com/p/ca8637b05c8a&quot;&gt;彻底理解cookie,session,localStorage(附代码)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>JumpC</name></author><category term="Web" /><summary type="html"></summary></entry><entry><title type="html">Javascript - 关于 apply, call, bind, this</title><link href="http://localhost:4000/2019/05/04/front-apply-call-bind/" rel="alternate" type="text/html" title="Javascript - 关于 apply, call, bind, this" /><published>2019-05-04T00:00:00+08:00</published><updated>2019-05-04T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/04/front-apply-call-bind</id><content type="html" xml:base="http://localhost:4000/2019/05/04/front-apply-call-bind/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1555999017-0d0f80510719?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
 
 &lt;!-- more --&gt;
 &lt;h3 id=&quot;关于-apply-call-bind-this&quot;&gt;关于 apply, call, bind, this&lt;/h3&gt;
@@ -155,83 +276,6 @@
   &lt;li&gt;
     &lt;p&gt;&lt;a href=&quot;[http://web.jobbole.com/83642/](http://web.jobbole.com/83642/)&quot;&gt;深入浅出妙用 Javascript 中 apply、call、bind&lt;/a&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>JumpC</name></author><category term="Web" /><summary type="html"></summary></entry><entry><title type="html">Javascript - 关于 null, undefined, 0, [], true, false, void</title><link href="http://localhost:4000/2019/05/03/front-js-null-undefined/" rel="alternate" type="text/html" title="Javascript - 关于 null, undefined, 0, [], true, false, void" /><published>2019-05-03T00:00:00+08:00</published><updated>2019-05-03T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/03/front-js-null-undefined</id><content type="html" xml:base="http://localhost:4000/2019/05/03/front-js-null-undefined/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ECMAScript中的数据类型:
-    &lt;ul&gt;
-      &lt;li&gt;原始类型： Undefined、Null、Boolean、Number 、 String、&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/Symbol&quot;&gt;Symbol&lt;/a&gt;(ECMAScript 6 新定义，类似于C中的枚举类型)&lt;/li&gt;
-      &lt;li&gt;复杂数据类型：Objet&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;null 是 Object&lt;/li&gt;
-  &lt;li&gt;undefined == null //true (undefined 派生自null)&lt;/li&gt;
-  &lt;li&gt;0 == ‘’ // true&lt;/li&gt;
-  &lt;li&gt;[] == false // true&lt;/li&gt;
-  &lt;li&gt;最初设计中，null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;null表示”没有对象”，即该处不应该有值&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;null  可理解为一个空指针，尚未指向任何对象。&lt;/li&gt;
-  &lt;li&gt;判断变量是否为undefined  :
-    &lt;ul&gt;
-      &lt;li&gt;使用 === 或者 !== , 当使用普通相等符== 时，会同时检查是否等于null&lt;/li&gt;
-      &lt;li&gt;使用typeof操作符&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;判断变量是否为null:
-    &lt;ul&gt;
-      &lt;li&gt;使用 === 或者 !==&lt;/li&gt;
-      &lt;li&gt;不可使用typeof ， typeof null == ‘object’ // true&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;void 运算符 对给定的表达式进行求值，然后返回 undefined&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'undefined is false'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// undefined is false&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'null is false'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// null is false&lt;/span&gt;
-
-&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getPrototypeOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// null&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;undefined&quot;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;undefined&quot;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//error&lt;/span&gt;
-
-
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;参考&quot;&gt;参考&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;[http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html)&quot;&gt;阮一峰: undefined与null 的区别&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://juejin.im/post/5aa4f7cc518825557e780256&quot;&gt;JavaScript深入理解之undefined与null&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://yanhaijing.com/javascript/2014/01/05/exploring-the-abyss-of-null-and-undefined-in-javascript/&quot;&gt;探索JavaScript中Null和Undefined的深渊&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>JumpC</name></author><category term="Web" /><summary type="html"></summary></entry><entry><title type="html">前端 - About Sass/Scss</title><link href="http://localhost:4000/2019/05/03/front-about-sass/" rel="alternate" type="text/html" title="前端 - About Sass/Scss" /><published>2019-05-03T00:00:00+08:00</published><updated>2019-05-03T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/03/front-about-sass</id><content type="html" xml:base="http://localhost:4000/2019/05/03/front-about-sass/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1480506132288-68f7705954bd?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjMwNTA3fQ&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1393&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -537,6 +581,83 @@ a:hover {
   &lt;li&gt;&lt;a href=&quot;http://www.w3cplus.com/sassguide/&quot;&gt;W3 - Sass Guide&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.sasschina.com/guide/&quot;&gt;Sass基础教程&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.w3cplus.com/sassguide/&quot;&gt;sass十分钟入门&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>JumpC</name></author><category term="Web" /><summary type="html"></summary></entry><entry><title type="html">Javascript - 关于 null, undefined, 0, [], true, false, void</title><link href="http://localhost:4000/2019/05/03/front-js-null-undefined/" rel="alternate" type="text/html" title="Javascript - 关于 null, undefined, 0, [], true, false, void" /><published>2019-05-03T00:00:00+08:00</published><updated>2019-05-03T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/03/front-js-null-undefined</id><content type="html" xml:base="http://localhost:4000/2019/05/03/front-js-null-undefined/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ECMAScript中的数据类型:
+    &lt;ul&gt;
+      &lt;li&gt;原始类型： Undefined、Null、Boolean、Number 、 String、&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Glossary/Symbol&quot;&gt;Symbol&lt;/a&gt;(ECMAScript 6 新定义，类似于C中的枚举类型)&lt;/li&gt;
+      &lt;li&gt;复杂数据类型：Objet&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;null 是 Object&lt;/li&gt;
+  &lt;li&gt;undefined == null //true (undefined 派生自null)&lt;/li&gt;
+  &lt;li&gt;0 == ‘’ // true&lt;/li&gt;
+  &lt;li&gt;[] == false // true&lt;/li&gt;
+  &lt;li&gt;最初设计中，null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;null表示”没有对象”，即该处不应该有值&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;null  可理解为一个空指针，尚未指向任何对象。&lt;/li&gt;
+  &lt;li&gt;判断变量是否为undefined  :
+    &lt;ul&gt;
+      &lt;li&gt;使用 === 或者 !== , 当使用普通相等符== 时，会同时检查是否等于null&lt;/li&gt;
+      &lt;li&gt;使用typeof操作符&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;判断变量是否为null:
+    &lt;ul&gt;
+      &lt;li&gt;使用 === 或者 !==&lt;/li&gt;
+      &lt;li&gt;不可使用typeof ， typeof null == ‘object’ // true&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;void 运算符 对给定的表达式进行求值，然后返回 undefined&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'undefined is false'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// undefined is false&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'null is false'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// null is false&lt;/span&gt;
+
+&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getPrototypeOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// null&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt;  &lt;span class=&quot;nx&quot;&gt;o&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;o&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// undefined&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;undefined&quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;undefined&quot;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//error&lt;/span&gt;
+
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;参考&quot;&gt;参考&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;[http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html)&quot;&gt;阮一峰: undefined与null 的区别&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://juejin.im/post/5aa4f7cc518825557e780256&quot;&gt;JavaScript深入理解之undefined与null&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://yanhaijing.com/javascript/2014/01/05/exploring-the-abyss-of-null-and-undefined-in-javascript/&quot;&gt;探索JavaScript中Null和Undefined的深渊&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>JumpC</name></author><category term="Web" /><summary type="html"></summary></entry><entry><title type="html">iOS - About ARC</title><link href="http://localhost:4000/2019/05/02/ios-arc/" rel="alternate" type="text/html" title="iOS - About ARC" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-arc</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-arc/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1484662020986-75935d2ebc66?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;
 &lt;!-- more --&gt;&lt;/p&gt;
 
@@ -1494,7 +1615,110 @@ block--&amp;gt;self
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;strongSelf is OK.
 tag is OK.
 TestBlockViewController dealloc.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>JumpC</name></author><category term="iOS" /><summary type="html"></summary></entry><entry><title type="html">iOS - 一些现代化的Objective-C 写法</title><link href="http://localhost:4000/2019/05/02/ios-modern-written/" rel="alternate" type="text/html" title="iOS - 一些现代化的Objective-C 写法" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-modern-written</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-modern-written/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?ixlib=rb-1.2.1&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>JumpC</name></author><category term="iOS" /><summary type="html"></summary></entry><entry><title type="html">iOS - 一些常用的宏</title><link href="http://localhost:4000/2019/05/02/ios-marcos/" rel="alternate" type="text/html" title="iOS - 一些常用的宏" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-marcos</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-marcos/">&lt;blockquote&gt;
+  &lt;p&gt;仅为本人项目中使用过的宏&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#define isStringNil(x)                              (nil == x || x.length &amp;lt;= 0)
+#define isArrayEmpty(x)                             (nil == x || x.count &amp;lt;= 0)
+#define InstantiateVCWithIdentifier(x) [[UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:x];
+#define PATH_OF_APP_HOME    NSHomeDirectory()
+#define PATH_OF_TEMP        NSTemporaryDirectory()
+#define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+#define PATH_OF_LIBRARY    [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+#define kScreen_Bounds [UIScreen mainScreen].bounds
+#define kScreen_Height [UIScreen mainScreen].bounds.size.height
+#define kScreen_Width [UIScreen mainScreen].bounds.size.width
+#define IS_IPHONE_6 (IS_IPHONE &amp;amp;&amp;amp; SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) &amp;lt; DBL_EPSILON )
+
+//第一种弱引用强引用
+#define WeakSelf __weak __typeof(&amp;amp;*self)weakSelf_SC = self;
+#define StrongSelf __strong typeof (weakSelf_SC)strongSelf = weakSelf_SC;
+
+//第二种弱引用强引用
+#define LRWeakSelf(type)  __weak typeof(type) weak##type = type;
+#define LRStrongSelf(type)  __strong typeof(type) type = weak##type;
+
+#define kNavigationHeight 64.0f
+#define kRootTabbarHeight 49.0f
+
+#define kTabbarH [(UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController tabBar].frame.size.height
+
+#pragma mark -  Log
+
+#ifdef DEBUG
+#define _VLog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define _VLog(...)
+#endif
+
+//获取随机颜色值
+#define LRRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
+
+
+//角度弧度转换
+#define LRDegreesToRadian(x) (M_PI * (x) / 180.0)
+#define LRRadianToDegrees(radian) (radian*180.0)/(M_PI)
+
+//获取当前语言
+#define LRCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+
+//判断是否为iPhone
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPhone&quot;])
+
+//判断是否为iPad
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPAD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPad&quot;])
+
+//判断是否为ipod
+#define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPod touch&quot;])
+
+// 判断是否为 iPhone 5SE
+#define iPhone5SE [[UIScreen mainScreen] bounds].size.width == 320.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 568.0f
+
+// 判断是否为iPhone 6/6s
+#define iPhone6_6s [[UIScreen mainScreen] bounds].size.width == 375.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 667.0f
+
+// 判断是否为iPhone 6Plus/6sPlus
+#define iPhone6Plus_6sPlus [[UIScreen mainScreen] bounds].size.width == 414.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 736.0f
+
+//获取系统版本
+#define IOS_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+#define IOS_SYSTEM_STRING [[UIDevice currentDevice] systemVersion]
+
+
+//判断 iOS 8 或更高的系统版本
+#define IOS_VERSION_8_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] &amp;gt;=8.0)? (YES):(NO))
+
+
+#if TARGET_OS_IPHONE  
+//iPhone Device  
+#endif  
+
+#if TARGET_IPHONE_SIMULATOR  
+//iPhone Simulator  
+#endif
+
+
+
+//GCD
+
+//GCD - 一次性执行
+#define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&amp;amp;onceToken, onceBlock);
+
+//GCD - 在Main线程上运行
+#define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock);
+
+//GCD - 开启异步线程
+#define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl);
+
+//获取一段时间间隔
+#define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
+#define kEndTime   NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>JumpC</name></author><category term="iOS" /><summary type="html">仅为本人项目中使用过的宏 #define isStringNil(x) (nil == x || x.length &amp;lt;= 0) #define isArrayEmpty(x) (nil == x || x.count &amp;lt;= 0) #define InstantiateVCWithIdentifier(x) [[UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:x]; #define PATH_OF_APP_HOME NSHomeDirectory() #define PATH_OF_TEMP NSTemporaryDirectory() #define PATH_OF_DOCUMENT [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] #define PATH_OF_LIBRARY [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] #define kScreen_Bounds [UIScreen mainScreen].bounds #define kScreen_Height [UIScreen mainScreen].bounds.size.height #define kScreen_Width [UIScreen mainScreen].bounds.size.width #define IS_IPHONE_6 (IS_IPHONE &amp;amp;&amp;amp; SCREEN_MAX_LENGTH == 667.0) #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) &amp;lt; DBL_EPSILON ) //第一种弱引用强引用 #define WeakSelf __weak __typeof(&amp;amp;*self)weakSelf_SC = self; #define StrongSelf __strong typeof (weakSelf_SC)strongSelf = weakSelf_SC; //第二种弱引用强引用 #define LRWeakSelf(type) __weak typeof(type) weak##type = type; #define LRStrongSelf(type) __strong typeof(type) type = weak##type; #define kNavigationHeight 64.0f #define kRootTabbarHeight 49.0f #define kTabbarH [(UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController tabBar].frame.size.height #pragma mark - Log #ifdef DEBUG #define _VLog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__); #else #define _VLog(...) #endif //获取随机颜色值 #define LRRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0] //角度弧度转换 #define LRDegreesToRadian(x) (M_PI * (x) / 180.0) #define LRRadianToDegrees(radian) (radian*180.0)/(M_PI) //获取当前语言 #define LRCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0]) //判断是否为iPhone #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) #define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPhone&quot;]) //判断是否为iPad #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) #define IS_IPAD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPad&quot;]) //判断是否为ipod #define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPod touch&quot;]) // 判断是否为 iPhone 5SE #define iPhone5SE [[UIScreen mainScreen] bounds].size.width == 320.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 568.0f // 判断是否为iPhone 6/6s #define iPhone6_6s [[UIScreen mainScreen] bounds].size.width == 375.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 667.0f // 判断是否为iPhone 6Plus/6sPlus #define iPhone6Plus_6sPlus [[UIScreen mainScreen] bounds].size.width == 414.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 736.0f //获取系统版本 #define IOS_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue] #define IOS_SYSTEM_STRING [[UIDevice currentDevice] systemVersion] //判断 iOS 8 或更高的系统版本 #define IOS_VERSION_8_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] &amp;gt;=8.0)? (YES):(NO)) #if TARGET_OS_IPHONE //iPhone Device #endif #if TARGET_IPHONE_SIMULATOR //iPhone Simulator #endif //GCD //GCD - 一次性执行 #define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&amp;amp;onceToken, onceBlock); //GCD - 在Main线程上运行 #define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock); //GCD - 开启异步线程 #define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl); //获取一段时间间隔 #define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent(); #define kEndTime NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)</summary></entry><entry><title type="html">iOS - 一些现代化的Objective-C 写法</title><link href="http://localhost:4000/2019/05/02/ios-modern-written/" rel="alternate" type="text/html" title="iOS - 一些现代化的Objective-C 写法" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-modern-written</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-modern-written/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?ixlib=rb-1.2.1&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
@@ -1848,110 +2072,7 @@ Adopting Modern Objective-C&lt;/a&gt;&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/swift/blog/?id=25&quot;&gt;Nullability and Objective-C&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;hr /&gt;</content><author><name>JumpC</name></author><category term="iOS" /><summary type="html"></summary></entry><entry><title type="html">iOS - 一些常用的宏</title><link href="http://localhost:4000/2019/05/02/ios-marcos/" rel="alternate" type="text/html" title="iOS - 一些常用的宏" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-marcos</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-marcos/">&lt;blockquote&gt;
-  &lt;p&gt;仅为本人项目中使用过的宏&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#define isStringNil(x)                              (nil == x || x.length &amp;lt;= 0)
-#define isArrayEmpty(x)                             (nil == x || x.count &amp;lt;= 0)
-#define InstantiateVCWithIdentifier(x) [[UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:x];
-#define PATH_OF_APP_HOME    NSHomeDirectory()
-#define PATH_OF_TEMP        NSTemporaryDirectory()
-#define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-#define PATH_OF_LIBRARY    [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-#define kScreen_Bounds [UIScreen mainScreen].bounds
-#define kScreen_Height [UIScreen mainScreen].bounds.size.height
-#define kScreen_Width [UIScreen mainScreen].bounds.size.width
-#define IS_IPHONE_6 (IS_IPHONE &amp;amp;&amp;amp; SCREEN_MAX_LENGTH == 667.0)
-#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) &amp;lt; DBL_EPSILON )
-
-//第一种弱引用强引用
-#define WeakSelf __weak __typeof(&amp;amp;*self)weakSelf_SC = self;
-#define StrongSelf __strong typeof (weakSelf_SC)strongSelf = weakSelf_SC;
-
-//第二种弱引用强引用
-#define LRWeakSelf(type)  __weak typeof(type) weak##type = type;
-#define LRStrongSelf(type)  __strong typeof(type) type = weak##type;
-
-#define kNavigationHeight 64.0f
-#define kRootTabbarHeight 49.0f
-
-#define kTabbarH [(UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController tabBar].frame.size.height
-
-#pragma mark -  Log
-
-#ifdef DEBUG
-#define _VLog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-#define _VLog(...)
-#endif
-
-//获取随机颜色值
-#define LRRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
-
-
-//角度弧度转换
-#define LRDegreesToRadian(x) (M_PI * (x) / 180.0)
-#define LRRadianToDegrees(radian) (radian*180.0)/(M_PI)
-
-//获取当前语言
-#define LRCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
-
-//判断是否为iPhone
-#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-#define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPhone&quot;])
-
-//判断是否为iPad
-#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-#define IS_IPAD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPad&quot;])
-
-//判断是否为ipod
-#define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPod touch&quot;])
-
-// 判断是否为 iPhone 5SE
-#define iPhone5SE [[UIScreen mainScreen] bounds].size.width == 320.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 568.0f
-
-// 判断是否为iPhone 6/6s
-#define iPhone6_6s [[UIScreen mainScreen] bounds].size.width == 375.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 667.0f
-
-// 判断是否为iPhone 6Plus/6sPlus
-#define iPhone6Plus_6sPlus [[UIScreen mainScreen] bounds].size.width == 414.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 736.0f
-
-//获取系统版本
-#define IOS_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
-#define IOS_SYSTEM_STRING [[UIDevice currentDevice] systemVersion]
-
-
-//判断 iOS 8 或更高的系统版本
-#define IOS_VERSION_8_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] &amp;gt;=8.0)? (YES):(NO))
-
-
-#if TARGET_OS_IPHONE  
-//iPhone Device  
-#endif  
-
-#if TARGET_IPHONE_SIMULATOR  
-//iPhone Simulator  
-#endif
-
-
-
-//GCD
-
-//GCD - 一次性执行
-#define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&amp;amp;onceToken, onceBlock);
-
-//GCD - 在Main线程上运行
-#define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock);
-
-//GCD - 开启异步线程
-#define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl);
-
-//获取一段时间间隔
-#define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
-#define kEndTime   NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>JumpC</name></author><category term="iOS" /><summary type="html">仅为本人项目中使用过的宏 #define isStringNil(x) (nil == x || x.length &amp;lt;= 0) #define isArrayEmpty(x) (nil == x || x.count &amp;lt;= 0) #define InstantiateVCWithIdentifier(x) [[UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:x]; #define PATH_OF_APP_HOME NSHomeDirectory() #define PATH_OF_TEMP NSTemporaryDirectory() #define PATH_OF_DOCUMENT [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] #define PATH_OF_LIBRARY [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] #define kScreen_Bounds [UIScreen mainScreen].bounds #define kScreen_Height [UIScreen mainScreen].bounds.size.height #define kScreen_Width [UIScreen mainScreen].bounds.size.width #define IS_IPHONE_6 (IS_IPHONE &amp;amp;&amp;amp; SCREEN_MAX_LENGTH == 667.0) #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) &amp;lt; DBL_EPSILON ) //第一种弱引用强引用 #define WeakSelf __weak __typeof(&amp;amp;*self)weakSelf_SC = self; #define StrongSelf __strong typeof (weakSelf_SC)strongSelf = weakSelf_SC; //第二种弱引用强引用 #define LRWeakSelf(type) __weak typeof(type) weak##type = type; #define LRStrongSelf(type) __strong typeof(type) type = weak##type; #define kNavigationHeight 64.0f #define kRootTabbarHeight 49.0f #define kTabbarH [(UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController tabBar].frame.size.height #pragma mark - Log #ifdef DEBUG #define _VLog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__); #else #define _VLog(...) #endif //获取随机颜色值 #define LRRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0] //角度弧度转换 #define LRDegreesToRadian(x) (M_PI * (x) / 180.0) #define LRRadianToDegrees(radian) (radian*180.0)/(M_PI) //获取当前语言 #define LRCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0]) //判断是否为iPhone #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) #define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPhone&quot;]) //判断是否为iPad #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) #define IS_IPAD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPad&quot;]) //判断是否为ipod #define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPod touch&quot;]) // 判断是否为 iPhone 5SE #define iPhone5SE [[UIScreen mainScreen] bounds].size.width == 320.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 568.0f // 判断是否为iPhone 6/6s #define iPhone6_6s [[UIScreen mainScreen] bounds].size.width == 375.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 667.0f // 判断是否为iPhone 6Plus/6sPlus #define iPhone6Plus_6sPlus [[UIScreen mainScreen] bounds].size.width == 414.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 736.0f //获取系统版本 #define IOS_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue] #define IOS_SYSTEM_STRING [[UIDevice currentDevice] systemVersion] //判断 iOS 8 或更高的系统版本 #define IOS_VERSION_8_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] &amp;gt;=8.0)? (YES):(NO)) #if TARGET_OS_IPHONE //iPhone Device #endif #if TARGET_IPHONE_SIMULATOR //iPhone Simulator #endif //GCD //GCD - 一次性执行 #define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&amp;amp;onceToken, onceBlock); //GCD - 在Main线程上运行 #define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock); //GCD - 开启异步线程 #define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl); //获取一段时间间隔 #define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent(); #define kEndTime NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)</summary></entry><entry><title type="html">iOS - Runtime 消息转发机制示意图</title><link href="http://localhost:4000/2019/05/01/ios-runtime/" rel="alternate" type="text/html" title="iOS - Runtime 消息转发机制示意图" /><published>2019-05-01T00:00:00+08:00</published><updated>2019-05-01T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/01/ios-runtime</id><content type="html" xml:base="http://localhost:4000/2019/05/01/ios-runtime/">&lt;h3 id=&quot;简化版&quot;&gt;简化版：&lt;/h3&gt;
+&lt;hr /&gt;</content><author><name>JumpC</name></author><category term="iOS" /><summary type="html"></summary></entry><entry><title type="html">iOS - Runtime 消息转发机制示意图</title><link href="http://localhost:4000/2019/05/01/ios-runtime/" rel="alternate" type="text/html" title="iOS - Runtime 消息转发机制示意图" /><published>2019-05-01T00:00:00+08:00</published><updated>2019-05-01T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/01/ios-runtime</id><content type="html" xml:base="http://localhost:4000/2019/05/01/ios-runtime/">&lt;h3 id=&quot;简化版&quot;&gt;简化版：&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/05/02/5ccb04f368b77.png&quot; alt=&quot;ios-runtime-simpe.png&quot; /&gt;&lt;/p&gt;
 
