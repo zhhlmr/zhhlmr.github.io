@@ -13,7 +13,7 @@ type: about
 ## 介绍
 
 
-- 我是谁：Han Chow
+- 我是谁：jumpC
 - 在哪: Guangzhou, China
 - 技能：
    -  Front-end : Vue/Nuxt.js/AngularJS/jQuery/Webpack/gulp/Sass/axios/ES6/
