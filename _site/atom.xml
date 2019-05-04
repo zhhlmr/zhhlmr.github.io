@@ -1,4 +1,161 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-04T07:22:14+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">Han Chow</title><subtitle>To improve is to change,to perfect is to change often.</subtitle><author><name>Han Chow</name></author><entry><title type="html">Javascript - 关于 null, undefined, 0, [], true, false, void</title><link href="http://localhost:4000/2019/05/04/front-js-null-undefined/" rel="alternate" type="text/html" title="Javascript - 关于 null, undefined, 0, [], true, false, void" /><published>2019-05-04T00:00:00+08:00</published><updated>2019-05-04T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/04/front-js-null-undefined</id><content type="html" xml:base="http://localhost:4000/2019/05/04/front-js-null-undefined/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-05-04T08:03:19+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">Han Chow</title><subtitle>To improve is to change,to perfect is to change often.</subtitle><author><name>Han Chow</name></author><entry><title type="html">Javascript - 关于 apply, call, bind, this</title><link href="http://localhost:4000/2019/05/04/front-apply-call-bind/" rel="alternate" type="text/html" title="Javascript - 关于 apply, call, bind, this" /><published>2019-05-04T00:00:00+08:00</published><updated>2019-05-04T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/04/front-apply-call-bind</id><content type="html" xml:base="http://localhost:4000/2019/05/04/front-apply-call-bind/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1555999017-0d0f80510719?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
+
+&lt;!-- more --&gt;
+&lt;h3 id=&quot;关于-apply-call-bind-this&quot;&gt;关于 apply, call, bind, this&lt;/h3&gt;
+
+&lt;p&gt;这个话题在网上的讨论有很多，本文仅为浅析及重点备注。&lt;/p&gt;
+
+&lt;p&gt;apply，call，bind 三者的主要作用是为了改变函数中使用的this的指向。&lt;/p&gt;
+
+&lt;p&gt;那么问题来了：&lt;/p&gt;
+
+&lt;h3 id=&quot;为什么要改变this-的指向呢&quot;&gt;为什么要改变this 的指向呢？&lt;/h3&gt;
+
+&lt;p&gt;这就谈论到了ES5了，在ES5中，&lt;strong&gt;this的指向，始终指向最后调用它的对象&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;如：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;windowsName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tFun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Cherry&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// windowsName&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;inner:&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// inner: Window&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;tFun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;outer:&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;// outer: Window&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//tFun() 相当于是隐式调用 window.tFun() 所以最后调用的对象是 window。&lt;/span&gt;
+
+
+ &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;windowsName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+ &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Cherry&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// Cherry&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// obj.fn() 为 对象obj 调用，所以log 的是 Cherry&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;以上为使用对象调用时的方式， 那么我们知道对象是可被赋值/调用的。&lt;/p&gt;
+
+&lt;p&gt;被赋值或调用时，会出现什么状况：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;windowsName&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// name: &quot;Cherry&quot;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// windowsName&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;another&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;another&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;当对象obj的函数fn赋值到another 时，尚未被 调用，another() 相当于 window.another()，所以this指向的最后调用它的对象应该是 window&lt;/p&gt;
+
+&lt;h3 id=&quot;怎样改变this的指向呢&quot;&gt;怎样改变this的指向呢？&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用ES6中的箭头函数
+    &lt;ul&gt;
+      &lt;li&gt;箭头函数的 this 始终指向函数定义时的 this，而非执行时。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;临时变量赋值 _self = this&lt;/li&gt;
+  &lt;li&gt;使用apply、call、bind&lt;/li&gt;
+  &lt;li&gt;new 一个对象&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;如何使用applycallbind&quot;&gt;如何使用apply,call,bind？&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'windowname'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'objname'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;objFunApply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+
+     &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;objFunCall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;objFunBind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;objFunApply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;objFunCall&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;objFunBind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;applycallbind的区别&quot;&gt;apply,call,bind的区别&lt;/h3&gt;
+
+&lt;h4 id=&quot;apply的调用方式&quot;&gt;apply的调用方式：&lt;/h4&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;fun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;thisArg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;argsArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;thisArg 为指定的this&lt;/li&gt;
+  &lt;li&gt;argsArray 为参数数组&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;call-的调用方式&quot;&gt;call 的调用方式：&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;fun.call(thisArg[, arg1[, arg2[, ...]]])
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;thisArg 为指定的this&lt;/li&gt;
+  &lt;li&gt;arg1 , arg2,…. argn 为 若干个参数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;bind-的调用方式&quot;&gt;bind 的调用方式：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;按照MDN的说明: bind()方法创建一个新的函数, 当被调用时，将其this关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;如：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;windowname&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;objname&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;objFun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;another&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;objFun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;another&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;another&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;another&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://juejin.im/post/59bfe84351882531b730bac2#heading-4&quot;&gt;this、apply、call、bind&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://hijiangtao.github.io/2017/05/07/Full-Usage-of-Apply-Call-and-Bind-in-JavaScript/&quot;&gt;JavaScript 中至关重要的 Apply, Call 和 Bind&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;[http://web.jobbole.com/83642/](http://web.jobbole.com/83642/)&quot;&gt;深入浅出妙用 Javascript 中 apply、call、bind&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Han Chow</name></author><category term="Web" /><summary type="html"></summary></entry><entry><title type="html">Javascript - 关于 null, undefined, 0, [], true, false, void</title><link href="http://localhost:4000/2019/05/03/front-js-null-undefined/" rel="alternate" type="text/html" title="Javascript - 关于 null, undefined, 0, [], true, false, void" /><published>2019-05-03T00:00:00+08:00</published><updated>2019-05-03T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/03/front-js-null-undefined</id><content type="html" xml:base="http://localhost:4000/2019/05/03/front-js-null-undefined/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&amp;amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
@@ -1337,110 +1494,7 @@ block--&amp;gt;self
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;strongSelf is OK.
 tag is OK.
 TestBlockViewController dealloc.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html"></summary></entry><entry><title type="html">iOS - 一些常用的宏</title><link href="http://localhost:4000/2019/05/02/ios-marcos/" rel="alternate" type="text/html" title="iOS - 一些常用的宏" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-marcos</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-marcos/">&lt;blockquote&gt;
-  &lt;p&gt;仅为本人项目中使用过的宏&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#define isStringNil(x)                              (nil == x || x.length &amp;lt;= 0)
-#define isArrayEmpty(x)                             (nil == x || x.count &amp;lt;= 0)
-#define InstantiateVCWithIdentifier(x) [[UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:x];
-#define PATH_OF_APP_HOME    NSHomeDirectory()
-#define PATH_OF_TEMP        NSTemporaryDirectory()
-#define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-#define PATH_OF_LIBRARY    [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0]
-#define kScreen_Bounds [UIScreen mainScreen].bounds
-#define kScreen_Height [UIScreen mainScreen].bounds.size.height
-#define kScreen_Width [UIScreen mainScreen].bounds.size.width
-#define IS_IPHONE_6 (IS_IPHONE &amp;amp;&amp;amp; SCREEN_MAX_LENGTH == 667.0)
-#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) &amp;lt; DBL_EPSILON )
-
-//第一种弱引用强引用
-#define WeakSelf __weak __typeof(&amp;amp;*self)weakSelf_SC = self;
-#define StrongSelf __strong typeof (weakSelf_SC)strongSelf = weakSelf_SC;
-
-//第二种弱引用强引用
-#define LRWeakSelf(type)  __weak typeof(type) weak##type = type;
-#define LRStrongSelf(type)  __strong typeof(type) type = weak##type;
-
-#define kNavigationHeight 64.0f
-#define kRootTabbarHeight 49.0f
-
-#define kTabbarH [(UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController tabBar].frame.size.height
-
-#pragma mark -  Log
-
-#ifdef DEBUG
-#define _VLog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-#define _VLog(...)
-#endif
-
-//获取随机颜色值
-#define LRRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
-
-
-//角度弧度转换
-#define LRDegreesToRadian(x) (M_PI * (x) / 180.0)
-#define LRRadianToDegrees(radian) (radian*180.0)/(M_PI)
-
-//获取当前语言
-#define LRCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
-
-//判断是否为iPhone
-#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-#define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPhone&quot;])
-
-//判断是否为iPad
-#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-#define IS_IPAD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPad&quot;])
-
-//判断是否为ipod
-#define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPod touch&quot;])
-
-// 判断是否为 iPhone 5SE
-#define iPhone5SE [[UIScreen mainScreen] bounds].size.width == 320.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 568.0f
-
-// 判断是否为iPhone 6/6s
-#define iPhone6_6s [[UIScreen mainScreen] bounds].size.width == 375.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 667.0f
-
-// 判断是否为iPhone 6Plus/6sPlus
-#define iPhone6Plus_6sPlus [[UIScreen mainScreen] bounds].size.width == 414.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 736.0f
-
-//获取系统版本
-#define IOS_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
-#define IOS_SYSTEM_STRING [[UIDevice currentDevice] systemVersion]
-
-
-//判断 iOS 8 或更高的系统版本
-#define IOS_VERSION_8_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] &amp;gt;=8.0)? (YES):(NO))
-
-
-#if TARGET_OS_IPHONE  
-//iPhone Device  
-#endif  
-
-#if TARGET_IPHONE_SIMULATOR  
-//iPhone Simulator  
-#endif
-
-
-
-//GCD
-
-//GCD - 一次性执行
-#define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&amp;amp;onceToken, onceBlock);
-
-//GCD - 在Main线程上运行
-#define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock);
-
-//GCD - 开启异步线程
-#define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl);
-
-//获取一段时间间隔
-#define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
-#define kEndTime   NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html">仅为本人项目中使用过的宏 #define isStringNil(x) (nil == x || x.length &amp;lt;= 0) #define isArrayEmpty(x) (nil == x || x.count &amp;lt;= 0) #define InstantiateVCWithIdentifier(x) [[UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:x]; #define PATH_OF_APP_HOME NSHomeDirectory() #define PATH_OF_TEMP NSTemporaryDirectory() #define PATH_OF_DOCUMENT [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] #define PATH_OF_LIBRARY [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] #define kScreen_Bounds [UIScreen mainScreen].bounds #define kScreen_Height [UIScreen mainScreen].bounds.size.height #define kScreen_Width [UIScreen mainScreen].bounds.size.width #define IS_IPHONE_6 (IS_IPHONE &amp;amp;&amp;amp; SCREEN_MAX_LENGTH == 667.0) #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) &amp;lt; DBL_EPSILON ) //第一种弱引用强引用 #define WeakSelf __weak __typeof(&amp;amp;*self)weakSelf_SC = self; #define StrongSelf __strong typeof (weakSelf_SC)strongSelf = weakSelf_SC; //第二种弱引用强引用 #define LRWeakSelf(type) __weak typeof(type) weak##type = type; #define LRStrongSelf(type) __strong typeof(type) type = weak##type; #define kNavigationHeight 64.0f #define kRootTabbarHeight 49.0f #define kTabbarH [(UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController tabBar].frame.size.height #pragma mark - Log #ifdef DEBUG #define _VLog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__); #else #define _VLog(...) #endif //获取随机颜色值 #define LRRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0] //角度弧度转换 #define LRDegreesToRadian(x) (M_PI * (x) / 180.0) #define LRRadianToDegrees(radian) (radian*180.0)/(M_PI) //获取当前语言 #define LRCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0]) //判断是否为iPhone #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) #define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPhone&quot;]) //判断是否为iPad #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) #define IS_IPAD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPad&quot;]) //判断是否为ipod #define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPod touch&quot;]) // 判断是否为 iPhone 5SE #define iPhone5SE [[UIScreen mainScreen] bounds].size.width == 320.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 568.0f // 判断是否为iPhone 6/6s #define iPhone6_6s [[UIScreen mainScreen] bounds].size.width == 375.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 667.0f // 判断是否为iPhone 6Plus/6sPlus #define iPhone6Plus_6sPlus [[UIScreen mainScreen] bounds].size.width == 414.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 736.0f //获取系统版本 #define IOS_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue] #define IOS_SYSTEM_STRING [[UIDevice currentDevice] systemVersion] //判断 iOS 8 或更高的系统版本 #define IOS_VERSION_8_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] &amp;gt;=8.0)? (YES):(NO)) #if TARGET_OS_IPHONE //iPhone Device #endif #if TARGET_IPHONE_SIMULATOR //iPhone Simulator #endif //GCD //GCD - 一次性执行 #define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&amp;amp;onceToken, onceBlock); //GCD - 在Main线程上运行 #define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock); //GCD - 开启异步线程 #define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl); //获取一段时间间隔 #define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent(); #define kEndTime NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)</summary></entry><entry><title type="html">iOS - 一些现代化的Objective-C 写法</title><link href="http://localhost:4000/2019/05/02/ios-modern-written/" rel="alternate" type="text/html" title="iOS - 一些现代化的Objective-C 写法" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-modern-written</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-modern-written/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?ixlib=rb-1.2.1&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html"></summary></entry><entry><title type="html">iOS - 一些现代化的Objective-C 写法</title><link href="http://localhost:4000/2019/05/02/ios-modern-written/" rel="alternate" type="text/html" title="iOS - 一些现代化的Objective-C 写法" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-modern-written</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-modern-written/">&lt;p&gt;&lt;img src=&quot;https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?ixlib=rb-1.2.1&amp;amp;auto=format&amp;amp;fit=crop&amp;amp;w=1950&amp;amp;q=80&quot; alt=&quot;cover&quot; /&gt;&lt;/p&gt;
 
 &lt;!-- more --&gt;
 
@@ -1794,7 +1848,110 @@ Adopting Modern Objective-C&lt;/a&gt;&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.apple.com/swift/blog/?id=25&quot;&gt;Nullability and Objective-C&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;hr /&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html"></summary></entry><entry><title type="html">iOS - Runtime 消息转发机制示意图</title><link href="http://localhost:4000/2019/05/01/ios-runtime/" rel="alternate" type="text/html" title="iOS - Runtime 消息转发机制示意图" /><published>2019-05-01T00:00:00+08:00</published><updated>2019-05-01T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/01/ios-runtime</id><content type="html" xml:base="http://localhost:4000/2019/05/01/ios-runtime/">&lt;h3 id=&quot;简化版&quot;&gt;简化版：&lt;/h3&gt;
+&lt;hr /&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html"></summary></entry><entry><title type="html">iOS - 一些常用的宏</title><link href="http://localhost:4000/2019/05/02/ios-marcos/" rel="alternate" type="text/html" title="iOS - 一些常用的宏" /><published>2019-05-02T00:00:00+08:00</published><updated>2019-05-02T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/02/ios-marcos</id><content type="html" xml:base="http://localhost:4000/2019/05/02/ios-marcos/">&lt;blockquote&gt;
+  &lt;p&gt;仅为本人项目中使用过的宏&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#define isStringNil(x)                              (nil == x || x.length &amp;lt;= 0)
+#define isArrayEmpty(x)                             (nil == x || x.count &amp;lt;= 0)
+#define InstantiateVCWithIdentifier(x) [[UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:x];
+#define PATH_OF_APP_HOME    NSHomeDirectory()
+#define PATH_OF_TEMP        NSTemporaryDirectory()
+#define PATH_OF_DOCUMENT    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+#define PATH_OF_LIBRARY    [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+#define kScreen_Bounds [UIScreen mainScreen].bounds
+#define kScreen_Height [UIScreen mainScreen].bounds.size.height
+#define kScreen_Width [UIScreen mainScreen].bounds.size.width
+#define IS_IPHONE_6 (IS_IPHONE &amp;amp;&amp;amp; SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) &amp;lt; DBL_EPSILON )
+
+//第一种弱引用强引用
+#define WeakSelf __weak __typeof(&amp;amp;*self)weakSelf_SC = self;
+#define StrongSelf __strong typeof (weakSelf_SC)strongSelf = weakSelf_SC;
+
+//第二种弱引用强引用
+#define LRWeakSelf(type)  __weak typeof(type) weak##type = type;
+#define LRStrongSelf(type)  __strong typeof(type) type = weak##type;
+
+#define kNavigationHeight 64.0f
+#define kRootTabbarHeight 49.0f
+
+#define kTabbarH [(UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController tabBar].frame.size.height
+
+#pragma mark -  Log
+
+#ifdef DEBUG
+#define _VLog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#define _VLog(...)
+#endif
+
+//获取随机颜色值
+#define LRRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
+
+
+//角度弧度转换
+#define LRDegreesToRadian(x) (M_PI * (x) / 180.0)
+#define LRRadianToDegrees(radian) (radian*180.0)/(M_PI)
+
+//获取当前语言
+#define LRCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+
+//判断是否为iPhone
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPhone&quot;])
+
+//判断是否为iPad
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPAD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPad&quot;])
+
+//判断是否为ipod
+#define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPod touch&quot;])
+
+// 判断是否为 iPhone 5SE
+#define iPhone5SE [[UIScreen mainScreen] bounds].size.width == 320.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 568.0f
+
+// 判断是否为iPhone 6/6s
+#define iPhone6_6s [[UIScreen mainScreen] bounds].size.width == 375.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 667.0f
+
+// 判断是否为iPhone 6Plus/6sPlus
+#define iPhone6Plus_6sPlus [[UIScreen mainScreen] bounds].size.width == 414.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 736.0f
+
+//获取系统版本
+#define IOS_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+#define IOS_SYSTEM_STRING [[UIDevice currentDevice] systemVersion]
+
+
+//判断 iOS 8 或更高的系统版本
+#define IOS_VERSION_8_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] &amp;gt;=8.0)? (YES):(NO))
+
+
+#if TARGET_OS_IPHONE  
+//iPhone Device  
+#endif  
+
+#if TARGET_IPHONE_SIMULATOR  
+//iPhone Simulator  
+#endif
+
+
+
+//GCD
+
+//GCD - 一次性执行
+#define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&amp;amp;onceToken, onceBlock);
+
+//GCD - 在Main线程上运行
+#define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock);
+
+//GCD - 开启异步线程
+#define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl);
+
+//获取一段时间间隔
+#define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();
+#define kEndTime   NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Han Chow</name></author><category term="iOS" /><summary type="html">仅为本人项目中使用过的宏 #define isStringNil(x) (nil == x || x.length &amp;lt;= 0) #define isArrayEmpty(x) (nil == x || x.count &amp;lt;= 0) #define InstantiateVCWithIdentifier(x) [[UIStoryboard storyboardWithName:@&quot;Main&quot; bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:x]; #define PATH_OF_APP_HOME NSHomeDirectory() #define PATH_OF_TEMP NSTemporaryDirectory() #define PATH_OF_DOCUMENT [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] #define PATH_OF_LIBRARY [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) objectAtIndex:0] #define kScreen_Bounds [UIScreen mainScreen].bounds #define kScreen_Height [UIScreen mainScreen].bounds.size.height #define kScreen_Width [UIScreen mainScreen].bounds.size.width #define IS_IPHONE_6 (IS_IPHONE &amp;amp;&amp;amp; SCREEN_MAX_LENGTH == 667.0) #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) &amp;lt; DBL_EPSILON ) //第一种弱引用强引用 #define WeakSelf __weak __typeof(&amp;amp;*self)weakSelf_SC = self; #define StrongSelf __strong typeof (weakSelf_SC)strongSelf = weakSelf_SC; //第二种弱引用强引用 #define LRWeakSelf(type) __weak typeof(type) weak##type = type; #define LRStrongSelf(type) __strong typeof(type) type = weak##type; #define kNavigationHeight 64.0f #define kRootTabbarHeight 49.0f #define kTabbarH [(UITabBarController *)[UIApplication sharedApplication].keyWindow.rootViewController tabBar].frame.size.height #pragma mark - Log #ifdef DEBUG #define _VLog(fmt, ...) NSLog((@&quot;%s [Line %d] &quot; fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__); #else #define _VLog(...) #endif //获取随机颜色值 #define LRRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0] //角度弧度转换 #define LRDegreesToRadian(x) (M_PI * (x) / 180.0) #define LRRadianToDegrees(radian) (radian*180.0)/(M_PI) //获取当前语言 #define LRCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0]) //判断是否为iPhone #define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) #define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPhone&quot;]) //判断是否为iPad #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) #define IS_IPAD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPad&quot;]) //判断是否为ipod #define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@&quot;iPod touch&quot;]) // 判断是否为 iPhone 5SE #define iPhone5SE [[UIScreen mainScreen] bounds].size.width == 320.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 568.0f // 判断是否为iPhone 6/6s #define iPhone6_6s [[UIScreen mainScreen] bounds].size.width == 375.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 667.0f // 判断是否为iPhone 6Plus/6sPlus #define iPhone6Plus_6sPlus [[UIScreen mainScreen] bounds].size.width == 414.0f &amp;amp;&amp;amp; [[UIScreen mainScreen] bounds].size.height == 736.0f //获取系统版本 #define IOS_SYSTEM_VERSION [[[UIDevice currentDevice] systemVersion] floatValue] #define IOS_SYSTEM_STRING [[UIDevice currentDevice] systemVersion] //判断 iOS 8 或更高的系统版本 #define IOS_VERSION_8_OR_LATER (([[[UIDevice currentDevice] systemVersion] floatValue] &amp;gt;=8.0)? (YES):(NO)) #if TARGET_OS_IPHONE //iPhone Device #endif #if TARGET_IPHONE_SIMULATOR //iPhone Simulator #endif //GCD //GCD - 一次性执行 #define kDISPATCH_ONCE_BLOCK(onceBlock) static dispatch_once_t onceToken; dispatch_once(&amp;amp;onceToken, onceBlock); //GCD - 在Main线程上运行 #define kDISPATCH_MAIN_THREAD(mainQueueBlock) dispatch_async(dispatch_get_main_queue(), mainQueueBlock); //GCD - 开启异步线程 #define kDISPATCH_GLOBAL_QUEUE_DEFAULT(globalQueueBlock) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), globalQueueBlocl); //获取一段时间间隔 #define kStartTime CFAbsoluteTime start = CFAbsoluteTimeGetCurrent(); #define kEndTime NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)</summary></entry><entry><title type="html">iOS - Runtime 消息转发机制示意图</title><link href="http://localhost:4000/2019/05/01/ios-runtime/" rel="alternate" type="text/html" title="iOS - Runtime 消息转发机制示意图" /><published>2019-05-01T00:00:00+08:00</published><updated>2019-05-01T00:00:00+08:00</updated><id>http://localhost:4000/2019/05/01/ios-runtime</id><content type="html" xml:base="http://localhost:4000/2019/05/01/ios-runtime/">&lt;h3 id=&quot;简化版&quot;&gt;简化版：&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://i.loli.net/2019/05/02/5ccb04f368b77.png&quot; alt=&quot;ios-runtime-simpe.png&quot; /&gt;&lt;/p&gt;
 

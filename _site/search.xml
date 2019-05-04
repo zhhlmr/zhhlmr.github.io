@@ -2,8 +2,23 @@
 <search>
   
     <entry>
+      <title><![CDATA[Javascript - 关于 apply, call, bind, this]]></title>
+      <url>/2019/05/04/front-apply-call-bind/</url>
+      <content type="text"><![CDATA[关于 apply, call, bind, this这个话题在网上的讨论有很多，本文仅为浅析及重点备注。apply，call，bind 三者的主要作用是为了改变函数中使用的this的指向。那么问题来了：为什么要改变this 的指向呢？这就谈论到了ES5了，在ES5中，this的指向，始终指向最后调用它的对象。如：var name = "windowsName";function tFun() {    var name = "Cherry";    console.log(this.name);          // windowsName    console.log("inner:" + this);    // inner: Window}tFun();console.log("outer:" + this)         // outer: Window//tFun() 相当于是隐式调用 window.tFun() 所以最后调用的对象是 window。 var name = "windowsName"; var obj = {        name: "Cherry",        fn : function () {            console.log(this.name);      // Cherry        } } obj.fn();// obj.fn() 为 对象obj 调用，所以log 的是 Cherry以上为使用对象调用时的方式， 那么我们知道对象是可被赋值/调用的。被赋值或调用时，会出现什么状况：var name = "windowsName";var obj = {    name : null,    // name: "Cherry",    fn : function () {        console.log(this.name);      // windowsName    }}var another = obj.fn;another();当对象obj的函数fn赋值到another 时，尚未被 调用，another() 相当于 window.another()，所以this指向的最后调用它的对象应该是 window怎样改变this的指向呢？  使用ES6中的箭头函数          箭头函数的 this 始终指向函数定义时的 this，而非执行时。        临时变量赋值 _self = this  使用apply、call、bind  new 一个对象如何使用apply,call,bind？var name = 'windowname';var obj = {    name : 'objname',    objFunApply: function(){     setTimeout(function(){          console.log(this.name)     }.apply(obj),100)    },    objFunCall: function(){        setTimeout(function(){          console.log(this.name)        }.call(obj),100)    },    objFunBind: function(){      setTimeout(function(){        console.log(this.name)      }.bind(obj),100)   }      }obj.objFunApply()obj.objFunCall()obj.objFunBind()apply,call,bind的区别apply的调用方式：fun.apply(thisArg, [argsArray])  thisArg 为指定的this  argsArray 为参数数组call 的调用方式：fun.call(thisArg[, arg1[, arg2[, ...]]])  thisArg 为指定的this  arg1 , arg2,…. argn 为 若干个参数bind 的调用方式：  按照MDN的说明: bind()方法创建一个新的函数, 当被调用时，将其this关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。如：var name = "windowname";var obj = {  name: "objname",  objFun: function(value1, value2) {    console.log(value1, value2);  }};var another = obj.objFun;another.apply(obj, [1, 2]);another.call(obj, 1, 2);another.bind(obj,1,2)()参考：      this、apply、call、bind        JavaScript 中至关重要的 Apply, Call 和 Bind        深入浅出妙用 Javascript 中 apply、call、bind  ]]></content>
+      <categories>
+        
+      </categories>
+      <tags>
+        
+          <tag> Web </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
       <title><![CDATA[Javascript - 关于 null, undefined, 0, [], true, false, void]]></title>
-      <url>/2019/05/04/front-js-null-undefined/</url>
+      <url>/2019/05/03/front-js-null-undefined/</url>
       <content type="text"><![CDATA[  ECMAScript中的数据类型:          原始类型： Undefined、Null、Boolean、Number 、 String、Symbol(ECMAScript 6 新定义，类似于C中的枚举类型)      复杂数据类型：Objet        null 是 Object  undefined == null //true (undefined 派生自null)  0 == ‘’ // true  [] == false // true  最初设计中，null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。  null表示”没有对象”，即该处不应该有值  undefined表示”缺少值”，就是此处应该有一个值，但是还没有定义  null  可理解为一个空指针，尚未指向任何对象。  判断变量是否为undefined  :          使用 === 或者 !== , 当使用普通相等符== 时，会同时检查是否等于null      使用typeof操作符        判断变量是否为null:          使用 === 或者 !==      不可使用typeof ， typeof null == ‘object’ // true        void 运算符 对给定的表达式进行求值，然后返回 undefinedif (!undefined)     console.log('undefined is false');// undefined is falseif (!null)     console.log('null is false');// null is falseundefined == null// trueObject.getPrototypeOf(Object.prototype)// nullvar i;i // undefinedfunction f(x){console.log(x)}f() // undefinedvar  o = new Object();o.p // undefinedvar x = f();x // undefinedvar value;console.log(typeof data); // "undefined"console.log(typeof value); // "undefined"console.log(data === undefined); //errorvar data;console.log(data === void 0); //true参考  阮一峰: undefined与null 的区别  JavaScript深入理解之undefined与null  探索JavaScript中Null和Undefined的深渊]]></content>
       <categories>
         

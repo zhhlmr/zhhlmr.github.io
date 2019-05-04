@@ -1,0 +1,1014 @@
+
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/assets/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/assets/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Web," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Han Chow" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="">
+<meta name="keywords" content="Web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript - 关于 apply, call, bind, this">
+<meta property="og:url" content="http://localhost:4000/2019/05/04/front-apply-call-bind/">
+<meta property="og:site_name" content="Han Chow">
+<meta property="og:description" content="">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://images.unsplash.com/photo-1555999017-0d0f80510719?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript - 关于 apply, call, bind, this">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1555999017-0d0f80510719?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://localhost:4000/"/>
+
+
+
+
+
+  <title>Javascript - 关于 apply, call, bind, this | Han Chow</title>
+  
+
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?115fef48c62e3ba51a36e5b946decaae";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Han Chow</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Change often.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+<div id="posts" class="posts-expand">
+  
+  
+
+  
+
+  
+  
+  
+
+  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://localhost:4000/2019/05/04/front-apply-call-bind/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Han Chow">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/assets/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Han Chow">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+          
+          
+            Javascript - 关于 apply, call, bind, this
+          
+        </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-04T00:00:00+08:00">
+                2019-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            
+                <div class="post-description">
+                    
+                </div>
+            
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <p><img src="https://images.unsplash.com/photo-1555999017-0d0f80510719?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80" alt="cover" /></p>
+
+<!-- more -->
+<h3 id="关于-apply-call-bind-this">关于 apply, call, bind, this</h3>
+
+<p>这个话题在网上的讨论有很多，本文仅为浅析及重点备注。</p>
+
+<p>apply，call，bind 三者的主要作用是为了改变函数中使用的this的指向。</p>
+
+<p>那么问题来了：</p>
+
+<h3 id="为什么要改变this-的指向呢">为什么要改变this 的指向呢？</h3>
+
+<p>这就谈论到了ES5了，在ES5中，<strong>this的指向，始终指向最后调用它的对象</strong>。</p>
+
+<p>如：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22</pre></td><td class="code"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"windowsName"</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">tFun</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"Cherry"</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>          <span class="c1">// windowsName</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"inner:"</span> <span class="o">+</span> <span class="k">this</span><span class="p">);</span>    <span class="c1">// inner: Window</span>
+<span class="p">}</span>
+<span class="nx">tFun</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"outer:"</span> <span class="o">+</span> <span class="k">this</span><span class="p">)</span>         <span class="c1">// outer: Window</span>
+
+<span class="c1">//tFun() 相当于是隐式调用 window.tFun() 所以最后调用的对象是 window。</span>
+
+
+ <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"windowsName"</span><span class="p">;</span>
+ <span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s2">"Cherry"</span><span class="p">,</span>
+        <span class="na">fn</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>      <span class="c1">// Cherry</span>
+        <span class="p">}</span>
+ <span class="p">}</span>
+ <span class="nx">obj</span><span class="p">.</span><span class="nx">fn</span><span class="p">();</span>
+
+<span class="c1">// obj.fn() 为 对象obj 调用，所以log 的是 Cherry</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>以上为使用对象调用时的方式， 那么我们知道对象是可被赋值/调用的。</p>
+
+<p>被赋值或调用时，会出现什么状况：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11</pre></td><td class="code"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"windowsName"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span> <span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="c1">// name: "Cherry",</span>
+    <span class="na">fn</span> <span class="p">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>      <span class="c1">// windowsName</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">another</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">fn</span><span class="p">;</span>
+<span class="nx">another</span><span class="p">();</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<p>当对象obj的函数fn赋值到another 时，尚未被 调用，another() 相当于 window.another()，所以this指向的最后调用它的对象应该是 window</p>
+
+<h3 id="怎样改变this的指向呢">怎样改变this的指向呢？</h3>
+
+<ul>
+  <li>使用ES6中的箭头函数
+    <ul>
+      <li>箭头函数的 this 始终指向函数定义时的 this，而非执行时。</li>
+    </ul>
+  </li>
+  <li>临时变量赋值 _self = this</li>
+  <li>使用apply、call、bind</li>
+  <li>new 一个对象</li>
+</ul>
+
+<h3 id="如何使用applycallbind">如何使用apply,call,bind？</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24</pre></td><td class="code"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s1">'windowname'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span> <span class="p">:</span> <span class="s1">'objname'</span><span class="p">,</span>
+    <span class="na">objFunApply</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+
+     <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+     <span class="p">}.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">obj</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="na">objFunCall</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+        <span class="p">}.</span><span class="nx">call</span><span class="p">(</span><span class="nx">obj</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="na">objFunBind</span><span class="p">:</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span>
+      <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">obj</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span>
+   <span class="p">}</span>
+      
+<span class="p">}</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">objFunApply</span><span class="p">()</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">objFunCall</span><span class="p">()</span>
+<span class="nx">obj</span><span class="p">.</span><span class="nx">objFunBind</span><span class="p">()</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<h3 id="applycallbind的区别">apply,call,bind的区别</h3>
+
+<h4 id="apply的调用方式">apply的调用方式：</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code><span class="nx">fun</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">thisArg</span><span class="p">,</span> <span class="p">[</span><span class="nx">argsArray</span><span class="p">])</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<ul>
+  <li>thisArg 为指定的this</li>
+  <li>argsArray 为参数数组</li>
+</ul>
+
+<h4 id="call-的调用方式">call 的调用方式：</h4>
+
+<div class="highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>fun.call(thisArg[, arg1[, arg2[, ...]]])
+</code></pre></td></tr></tbody></table></div></div>
+
+<ul>
+  <li>thisArg 为指定的this</li>
+  <li>arg1 , arg2,…. argn 为 若干个参数</li>
+</ul>
+
+<h3 id="bind-的调用方式">bind 的调用方式：</h3>
+
+<ul>
+  <li>按照MDN的说明: bind()方法创建一个新的函数, 当被调用时，将其this关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。</li>
+</ul>
+
+<p>如：</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12</pre></td><td class="code"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">"windowname"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s2">"objname"</span><span class="p">,</span>
+  <span class="na">objFun</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">value1</span><span class="p">,</span> <span class="nx">value2</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">another</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">.</span><span class="nx">objFun</span><span class="p">;</span>
+<span class="nx">another</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]);</span>
+<span class="nx">another</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">another</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)()</span>
+</code></pre></td></tr></tbody></table></div></div>
+
+<h3 id="参考">参考：</h3>
+
+<ul>
+  <li>
+    <p><a href="https://juejin.im/post/59bfe84351882531b730bac2#heading-4">this、apply、call、bind</a></p>
+  </li>
+  <li>
+    <p><a href="https://hijiangtao.github.io/2017/05/07/Full-Usage-of-Apply-Call-and-Bind-in-JavaScript/">JavaScript 中至关重要的 Apply, Call 和 Bind</a></p>
+  </li>
+  <li>
+    <p><a href="[http://web.jobbole.com/83642/](http://web.jobbole.com/83642/)">深入浅出妙用 Javascript 中 apply、call、bind</a></p>
+  </li>
+</ul>
+
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            
+            <a href="/tag/#/Web" rel="tag"># Web</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/03/front-js-null-undefined/" rel="prev" title="Javascript - 关于 null, undefined, 0, [], true, false, void">
+                Javascript - 关于 null, undefined, 0, [], true, false, void <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+      
+
+      
+    </footer>
+  </article>
+
+  <div class="post-spread">
+    
+  </div>
+</div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDAzOS8yMDU3NA=="></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        
+        
+        
+
+
+
+
+
+
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/assets/images/avatar.png"
+               alt="Han Chow" />
+          <p class="site-author-name" itemprop="name">Han Chow</p>
+           
+              <p class="site-description motion-element" itemprop="description">To improve is to change,to perfect is to change often.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+        
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              
+              
+              <span class="links-of-author-item">
+                <a href="http://github.com/zhhlmr" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-3"> <a class="nav-link" href="#关于-apply-call-bind-this"> <span class="nav-number">1</span> <span class="nav-text">关于 apply, call, bind, this</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#为什么要改变this-的指向呢"> <span class="nav-number">2</span> <span class="nav-text">为什么要改变this 的指向呢？</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#怎样改变this的指向呢"> <span class="nav-number">3</span> <span class="nav-text">怎样改变this的指向呢？</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#如何使用applycallbind"> <span class="nav-number">4</span> <span class="nav-text">如何使用apply,call,bind？</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#applycallbind的区别"> <span class="nav-number">5</span> <span class="nav-text">apply,call,bind的区别</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-4"> <a class="nav-link" href="#apply的调用方式"> <span class="nav-number">5.1</span> <span class="nav-text">apply的调用方式：</span> </a> </li> <li class="nav-item nav-level-4"> <a class="nav-link" href="#call-的调用方式"> <span class="nav-number">5.2</span> <span class="nav-text">call 的调用方式：</span> </a> </li> </ol> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#bind-的调用方式"> <span class="nav-number">6</span> <span class="nav-text">bind 的调用方式：</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#参考"> <span class="nav-number">7</span> <span class="nav-text">参考：</span> </a> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Han Chow</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://jekyllrb.com">Jekyll</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/simpleyyt/jekyll-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+   
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  
+  
+  
+  
+  <script type="text/javascript" src="/assets/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/affix.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/assets/js/src/schemes/pisces.js?v=5.1.1"></script>
+
+
+
+  <script type="text/javascript" src="/assets/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/assets/js/src/post-details.js?v=5.1.1"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/assets/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+    
+      <script type="text/javascript">
+        (function(d, s) {
+          var j, e = d.getElementsByTagName(s)[0];
+          if (typeof LivereTower === 'function') { return; }
+          j = d.createElement(s);
+          j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+          j.async = true;
+          e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+      </script>
+    
+
+  
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
