@@ -13,17 +13,17 @@ order: 4
 
 ## Introduction
 
+I'm a software developer based in China, Focused in Front-end development, and currently expanding into Full stack development.
+
 
 - Who am I：Han Chow
 - Where am I: Guangzhou, China
-- Skills：
-   -  Front-end : Vue/Nuxt.js/AngularJS/jQuery/Webpack/gulp/Sass/axios/ES6/
-   -  Back-end : Node.js/MongoDB/Redis/Nginx
+- Skills:
+   -  Front-end : JavaScript, TypeScript, Vue.js(2&3),React.js, jQuery, Weex, Taro, Bootstrap, Ant-design, Element UI, Echarts, Electron, Webpack, Gulp
+   -  Back-end : Nuxt.js, Node.js, Express, MongoDB, Redis, Nginx
+   -  Version Control : Git, SVN
    -  iOS : Objective-C/Cocoapods
-   -  Others : Wechat Mini program/mpvue
+   -  Others : Figma, Sketch, Photoshop, Axure
 
-## Contact:
 
-- Email : zhouhan199132@gmail.com
-- Github : http://github.com/zhhlmr
 
