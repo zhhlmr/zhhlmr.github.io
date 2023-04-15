@@ -1,5 +1,6 @@
 ---
 title: Javascript - 关于 Cookie、Session、Localstorage
+categories: [Programming, Front-end]
 tags: 
  -  Web
 ---

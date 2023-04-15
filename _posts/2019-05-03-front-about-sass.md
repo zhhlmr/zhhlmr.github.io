@@ -1,5 +1,6 @@
 ---
 title: 前端 - About Sass/Scss
+categories: [Programming, Front-end]
 tags: 
  - Web
 ---

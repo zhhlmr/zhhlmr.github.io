@@ -1,5 +1,6 @@
 ---
 title: iOS - Runtime 消息转发机制示意图
+categories: [Programming, iOS]
 tags: 
  - iOS
 ---

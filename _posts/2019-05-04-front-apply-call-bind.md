@@ -1,5 +1,6 @@
 ---
 title: Javascript - 关于 apply, call, bind, this
+categories: [Programming, Front-end]
 tags: 
  -  Web
 ---

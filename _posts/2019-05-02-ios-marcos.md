@@ -1,5 +1,6 @@
 ---
 title: iOS - 一些常用的宏
+categories: [Programming, iOS]
 tags: 
  - iOS
 ---

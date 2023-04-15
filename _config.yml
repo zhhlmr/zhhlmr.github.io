@@ -83,17 +83,17 @@ img_cdn:
 avatar: https://avatars.githubusercontent.com/u/1525180?s=400&u=22c5445b4f7ab351d1b8bb90504bd287e0784cb3&v=4
 
 # boolean type, the global switch for TOC in posts.
-toc: true
+toc: false
 
 comments:
-  active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
+  active: 'utterances' # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
   disqus:
     shortname: # fill with the Disqus shortname. › https://help.disqus.com/en/articles/1717111-what-s-a-shortname
   # utterances settings › https://utteranc.es/
   utterances:
-    repo: # <gh-username>/<repo>
-    issue_term: # < url | pathname | title | ...>
+    repo: zhhlmr/zhhlmr.github.io # <gh-username>/<repo>
+    issue_term: pathname # < url | pathname | title | ...>
   # Giscus options › https://giscus.app
   giscus:
     repo: # <gh-username>/<repo>

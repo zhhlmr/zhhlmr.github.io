@@ -1,7 +1,10 @@
 ---
 title: Javascript - 关于 null, undefined, 0, [], true, false, void
+categories: [Programming, Front-end]
 tags: 
  -  Web
+
+comments: true
 ---
 
 <!-- ![cover](https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80) -->

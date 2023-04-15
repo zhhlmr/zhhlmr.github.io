@@ -1,5 +1,6 @@
 ---
 title: iOS - 一些现代化的Objective-C 写法
+categories: [Programming, iOS]
 tags: 
  - iOS
 ---
