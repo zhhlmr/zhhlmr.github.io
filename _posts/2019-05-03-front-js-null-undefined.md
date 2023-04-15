@@ -4,7 +4,7 @@ tags:
  -  Web
 ---
 
-![cover](https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)
+<!-- ![cover](https://images.unsplash.com/photo-1484807352052-23338990c6c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80) -->
 
 <!-- more -->
 
@@ -69,9 +69,9 @@ console.log(data === void 0); //true
 
 
 
-#### 参考
+<!-- #### 参考
 
 - [阮一峰: undefined与null 的区别]([http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html](http://www.ruanyifeng.com/blog/2014/03/undefined-vs-null.html))
 - [JavaScript深入理解之undefined与null](https://juejin.im/post/5aa4f7cc518825557e780256)
-- [探索JavaScript中Null和Undefined的深渊](https://yanhaijing.com/javascript/2014/01/05/exploring-the-abyss-of-null-and-undefined-in-javascript/)
+- [探索JavaScript中Null和Undefined的深渊](https://yanhaijing.com/javascript/2014/01/05/exploring-the-abyss-of-null-and-undefined-in-javascript/) -->
 

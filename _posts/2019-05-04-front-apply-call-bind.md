@@ -4,7 +4,7 @@ tags:
  -  Web
 ---
 
-![cover](https://images.unsplash.com/photo-1555999017-0d0f80510719?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)
+<!-- ![cover](https://images.unsplash.com/photo-1555999017-0d0f80510719?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80) -->
 
 <!-- more -->
 ### 关于 apply, call, bind, this
@@ -173,7 +173,7 @@ another.bind(obj,1,2)()
 
 
 
-
+<!-- 
 ### 参考：
 
 
@@ -182,6 +182,6 @@ another.bind(obj,1,2)()
 
 - [JavaScript 中至关重要的 Apply, Call 和 Bind](https://hijiangtao.github.io/2017/05/07/Full-Usage-of-Apply-Call-and-Bind-in-JavaScript/)
 
-- [深入浅出妙用 Javascript 中 apply、call、bind]([http://web.jobbole.com/83642/](http://web.jobbole.com/83642/))
+- [深入浅出妙用 Javascript 中 apply、call、bind]([http://web.jobbole.com/83642/](http://web.jobbole.com/83642/)) -->
 
   

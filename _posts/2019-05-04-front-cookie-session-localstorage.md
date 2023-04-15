@@ -6,7 +6,7 @@ tags:
 
 
 
-![cover](https://images.unsplash.com/photo-1556468282-52b7aa97e00a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)
+<!-- ![cover](https://images.unsplash.com/photo-1556468282-52b7aa97e00a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80) -->
 
 <!-- more -->
 

@@ -4,7 +4,7 @@ tags:
  - iOS
 ---
 
-![cover](https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)
+<!-- ![cover](https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80) -->
 
 <!-- more -->
 
