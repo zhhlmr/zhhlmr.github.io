@@ -21,10 +21,10 @@ Hi, I'm a software developer based in China, Focused in Front-end development, a
 - Name：Han Chow
 - Base : Guangzhou, China
 - Skills:
-   -  Front-end : JavaScript, TypeScript, Vue.js(2&3),React.js, jQuery, Weex, Taro, Bootstrap, Ant-design, Element UI, Echarts, Electron, Webpack, Gulp
+   -  Front-end : JavaScript, TypeScript, Vue.js(2&3), React.js, jQuery, Weex, Taro, Bootstrap, Ant-design, Element UI, Echarts, Electron, Webpack, Gulp
    -  Back-end : Nuxt.js, Node.js, Express, MongoDB, Redis, Nginx
    -  Version Control : Git, SVN
-   -  iOS : Objective-C/Cocoapods
+   -  iOS : Objective-C, Cocoapods
    -  Others : Figma, Sketch, Photoshop, Axure
 
 
