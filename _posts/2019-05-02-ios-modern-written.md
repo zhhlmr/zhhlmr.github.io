@@ -13,7 +13,7 @@ tags:
 
 首先，我们来看看以下代码：
 
-```
+```objc
 @interface MyObject : NSObject
 + (instancetype)factoryMethodA;
 + (id)factoryMethodB;
@@ -83,7 +83,7 @@ void doSomething() {
 
 - 如UITableViewCellStyle
 
-```
+```objc
 typedef NS_ENUM(NSInteger, UITableViewCellStyle) {
         UITableViewCellStyleDefault,
         UITableViewCellStyleValue1,
@@ -94,7 +94,7 @@ typedef NS_ENUM(NSInteger, UITableViewCellStyle) {
 
 - 如UIViewAutoresizing:
 
-```
+```objc
 typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {
         UIViewAutoresizingNone                 = 0,//值为0
         UIViewAutoresizingFlexibleLeftMargin   = 1 << 0,//值为2的0次方
@@ -135,7 +135,7 @@ Designated Initializer (指定初始化器),可以如Swift 一般指定构造器
 
 示例：
 
-```
+```objc
 
 #import "TestInitView.h"
 
@@ -202,21 +202,21 @@ Designated Initializer (指定初始化器),可以如Swift 一般指定构造器
 
 当用于修饰一个变量的时候，可以这样用：
 
-```
+```objc
 @property (nonatomic, strong, nonnull) Sark *sark;
 @property (nonatomic, copy, readonly, nullable) NSArray *friends;
 ```
 
 当用于修饰一个方法时，可以这样用：
 
-```
+```objc
 + (nullable NSString *)friendWithName:(nonnull NSString *)name;
 
 ```
 
 当用于修饰一个Block时，可以这样用:
 
-```
+```objc
 - (void)startWithCompletionBlock:(nullable void (^)(NSError * __nullable error))block;
 
 ```
@@ -224,7 +224,7 @@ Designated Initializer (指定初始化器),可以如Swift 一般指定构造器
 除此之外，还有一个null_resettable。
 举例说明：
 
-```
+```objc
 @property (null_resettable, nonatomic, strong) UIView *view;
 ```
 
@@ -235,7 +235,7 @@ Designated Initializer (指定初始化器),可以如Swift 一般指定构造器
 
 示例:
 
-```
+```objc
 NS_ASSUME_NONNULL_BEGIN
 @interface Sark : NSObject
 @property (nonatomic, copy, nullable) NSString *workingCompany;
@@ -257,7 +257,7 @@ NS_ASSUME_NONNULL_END
 
 示例:
 
-```
+```objc
 NSArray<NSString *> *strings = @[@"sun", @"yuan"];
 NSDictionary<NSString *, NSNumber *> *mapping = @{@"a": @1, @"b": @2};
 
@@ -273,7 +273,7 @@ NSDictionary<NSString *, NSNumber *> *mapping = @{@"a": @1, @"b": @2};
 
 示例：
 
-```
+```objc
 @interface Stack<ObjectType> : NSObject
 - (void)pushObject:(ObjectType)object;
 - (ObjectType)popObject;
@@ -286,7 +286,7 @@ NSDictionary<NSString *, NSNumber *> *mapping = @{@"a": @1, @"b": @2};
 
 在此基础上，也可以增加类型限制，例如:
 
-```
+```objc
 // 只接受 NSNumber * 的泛型
 @interface Stack<ObjectType: NSNumber *> : NSObject
 // 只接受满足 NSCopying 协议的泛型
@@ -298,7 +298,7 @@ NSDictionary<NSString *, NSNumber *> *mapping = @{@"a": @1, @"b": @2};
 
 以下代码中， 虽然都是Stack，但其实是三个不同的Type:
 
-```
+```objc
 Stack *stack; // Stack *
 Stack<NSString *> *stringStack; // Stack<NSString *>
 Stack<NSMutableString *> *mutableStringStack; // Stack<NSMutableString *>
@@ -312,7 +312,7 @@ Stack<NSMutableString *> *mutableStringStack; // Stack<NSMutableString *>
 
 使用方法：
 
-```
+```objc
 //协变
 @interface Stack<__covariant ObjectType> : NSObject
 //逆变
@@ -326,7 +326,7 @@ Stack<NSMutableString *> *mutableStringStack; // Stack<NSMutableString *>
 
 ## __kindof 修饰符
 
-```
+```objc
 //原来
 - (id)dequeueReusableCellWithIdentifier:(NSString *)identifier;
 //在UITableView中的使用
@@ -339,7 +339,7 @@ Stack<NSMutableString *> *mutableStringStack; // Stack<NSMutableString *>
 
 增加了__kindof 修饰符后，编译器会知道该方法返回的是什么类型的对象，这样就不用在取值时强转类型了。
 
-```
+```objc
 //未用__kindof
 UIButton *button = (UIButton*) view.subviews.lastObject;
 

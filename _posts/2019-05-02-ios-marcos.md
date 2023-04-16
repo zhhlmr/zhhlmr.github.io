@@ -9,7 +9,7 @@ tags:
 
 
 
-```
+```objc
 #define isStringNil(x)                              (nil == x || x.length <= 0)
 #define isArrayEmpty(x)                             (nil == x || x.count <= 0)
 #define InstantiateVCWithIdentifier(x) [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:x];

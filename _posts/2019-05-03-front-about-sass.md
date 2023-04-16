@@ -13,8 +13,8 @@ tags:
 
 #### Variables (变量)
 
-```
-//sass style
+```css
+// sass style
 //-----------------------------------
 $fontStack:    Helvetica, sans-serif;
 $primaryColor: #333;
@@ -39,8 +39,8 @@ body {
 
 #### Nesting (嵌套)
 
-```
-//sass style
+```css
+// sass style
 //-----------------------------------
 nav {
   ul {
@@ -81,8 +81,8 @@ nav a {
 
 #### Import (导入)
 
-```
-//sass style
+```css
+// sass style
 //-----------------------------------
 // _reset.scss
 
@@ -122,8 +122,7 @@ body {
 
 
 #### Mixin (宏定义)
-
-```
+```css
 //sass style
 //-----------------------------------
 @mixin box-sizing ($sizing) {
@@ -150,7 +149,7 @@ body {
 #### Extended/Inherited (扩展/继承)
 
 
-```
+```css
 //sass style
 //-----------------------------------
 .message {
@@ -199,7 +198,7 @@ body {
 
 #### Operatior（运算符）
 
-```
+```css
 //sass style
 //-----------------------------------
 .container { width: 100%; }
@@ -236,7 +235,7 @@ aside[role="complimentary"] {
 #### Color (颜色)
 
 
-```
+```css
 //sass style
 //-----------------------------------
 $linkColor: #08c;
@@ -267,7 +266,7 @@ a:hover {
 
 
 
-```
+```css
 p {
 　　　　@if 1 + 1 == 2 { border: 1px solid; }
 　　　　@if 5 < 3 { border: 2px dotted; }
@@ -290,7 +289,7 @@ p {
 #### For/While (循环语句)
 
 
-```
+```css
 @for $i from 1 to 10 {
 　　　　.border-#{$i} {
 　　　　　　border: #{$i}px solid blue;
@@ -323,7 +322,7 @@ $i: 6;
 #### Function（自定义函数）
 
 
-```
+```css
 @function double($n) {
 　　　　@return $n * 2;
 　　}

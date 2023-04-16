@@ -1,1 +1,1 @@
-bundle exec jekyll serve --livereload --port 4320 --incremental
+bundle exec jekyll serve --livereload --port 4320 

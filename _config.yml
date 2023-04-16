@@ -22,11 +22,11 @@ title: Han Chow # the main title
 
 tagline: To improve is to change, to perfect is to change often # it will display as the sub-title
 
-description: >- # used by seo meta and the atom feed
-  Han Chow's Blog.
+description: Han Chow's Blog. # used by seo meta and the atom feed
+  
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ""
+url: "https://zhhlmr.github.io"
 
 github:
   username: zhhlmr # change to your github username
@@ -126,7 +126,7 @@ kramdown:
     css_class: highlight
     # default_lang: console
     span:
-      line_numbers: true
+      line_numbers: false
     block:
       line_numbers: true
       start_line: 1

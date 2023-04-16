@@ -11,13 +11,15 @@ order: 4
 ---
 
 
-## Introduction
 
-I'm a software developer based in China, Focused in Front-end development, and currently expanding into Full stack development.
+![](https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)
 
 
-- Who am I：Han Chow
-- Where am I: Guangzhou, China
+Hi, I'm a software developer based in China, Focused in Front-end development, and currently expanding into Full stack development.
+
+
+- Name：Han Chow
+- Base : Guangzhou, China
 - Skills:
    -  Front-end : JavaScript, TypeScript, Vue.js(2&3),React.js, jQuery, Weex, Taro, Bootstrap, Ant-design, Element UI, Echarts, Electron, Webpack, Gulp
    -  Back-end : Nuxt.js, Node.js, Express, MongoDB, Redis, Nginx
