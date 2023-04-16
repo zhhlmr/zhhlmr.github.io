@@ -77,10 +77,10 @@ theme_mode:  # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-img_cdn: 
+img_cdn: https://hanchow-static-host.vercel.app/
 
 # the avatar on sidebar, support local or CORS resources
-avatar: https://avatars.githubusercontent.com/u/1525180?s=400&u=22c5445b4f7ab351d1b8bb90504bd287e0784cb3&v=4
+avatar: /static/avatar.png
 
 # boolean type, the global switch for TOC in posts.
 toc: false
