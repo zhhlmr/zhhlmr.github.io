@@ -1,0 +1,1 @@
+htmlproofer --check-html --internal-domains localhost:4320 --assume-extension --disable-external _site
