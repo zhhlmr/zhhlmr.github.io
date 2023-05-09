@@ -11,20 +11,19 @@ order: 4
 ---
 
 
-
 ![](https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80)
 
 
 Hi, I'm Han Chow, for the past 10 years, I have been a hands-on and adaptable problem solver, specializing in front-end and mobile development. 
 
-- Base : China
 - Skills:
-   -  Front-end : JavaScript, TypeScript, Vue.js(2&3), React.js, jQuery, Webpack, Gulp.
-   -  Frameworks: React Native, Expo, Weex, Taro, Electron.
-   -  Library : TailwindCSS, Ant-design, Element UI, Echarts, Vuex, Redux.
-   -  Back-end : Next.js, Nuxt.js, Node.js, Express, MongoDB, Nginx.
+   -  Front-end: JavaScript, TypeScript, Vue.js(2&3), React.js, jQuery, Webpack, Gulp.
+   -  Frameworks: Next.js, Nuxt.js, React Native, Expo, Weex, Taro, Electron.
+   -  Components: TailwindCSS, Chakra UI, React Native Elements, NativeBase, Ant-design, Element UI.
+   -  Library : Echarts, Vuex, Redux,
+   -  Back-end: Node.js, Express, MongoDB, Nginx.
    -  Version Control : Git, SVN.
-   -  iOS : Objective-C, Cocoapods.
+   -  iOS dev: Objective-C, Cocoapods.
    -  Others : Figma, Sketch, Photoshop, Axure.
 
 
