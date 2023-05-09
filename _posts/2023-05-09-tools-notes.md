@@ -18,11 +18,11 @@ tags:
 - [Rectangle]( https://rectangleapp.com/): 窗口调整工具 （开源 & Mac OS）
 - [Sensei](https://cindori.com/sensei):系统整理清理工具，附带有菜单栏上显示CPU、内存等状态信息 (Mac OS)
 - [MonitorControl](https://monitorcontrol.app/) : 显示器亮度调整工具 （开源 & Mac OS）
-- [Warp](https://warp.dev/) - Next generation Terminal ( Mac OS)
-- [iTerm2](https://iterm2.com/) - Terminal replacement for Mac
-- [Motrix](https://motrix.app/) - Download
-- [iHosts](https://github.com/toolinbox/iHosts) - hosts 编辑工具 (Mac OS)
-- [Notion](https://www.notion.so/) - 众所周知的软件了
+- [Warp](https://warp.dev/): Next generation Terminal ( Mac OS)
+- [iTerm2](https://iterm2.com/): Terminal replacement for Mac
+- [Motrix](https://motrix.app/): Download
+- [iHosts](https://github.com/toolinbox/iHosts): hosts 编辑工具 (Mac OS)
+- [Notion](https://www.notion.so/) : 众所周知的软件了
 
   
 
