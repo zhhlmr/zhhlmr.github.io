@@ -16,7 +16,7 @@ order: 4
 
 Hi, I'm Han Chow, for the past 10 years, I have been a hands-on and adaptable problem solver, specializing in front-end and mobile development. 
 
-- Skills:
+- Skills & Tech stacks:
    -  Front-end: JavaScript, TypeScript, Vue.js(2&3), React.js, jQuery, Webpack, Gulp.
    -  Frameworks: Next.js, Nuxt.js, React Native, Expo, Weex, Taro, Electron.
    -  Components: TailwindCSS, Chakra UI, React Native Elements, NativeBase, Ant-design, Element UI.
