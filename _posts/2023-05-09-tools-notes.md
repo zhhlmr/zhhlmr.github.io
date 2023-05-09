@@ -12,7 +12,7 @@ tags:
 - [Excalidraw](https://excalidraw.com/) : 在线画图工具
 - [图压](https://tuya.xinxiao.tech/) : 图片压缩工具（免费）
 - [Snipaste](https://www.snipaste.com/) : Screenshoot Tool
-- [Typora](https://typora.io/) - Markdown Editor
+- [Typora](https://typora.io/): Markdown Editor
 - [Fork]( https://git-fork.com/): 个人认为是更简洁的 Git 代码管理工具，
 - [Sourcetree](https://www.sourcetreeapp.com/): 很全面的 Git 代码管理工具
 - [Rectangle]( https://rectangleapp.com/): 窗口调整工具 （开源 & Mac OS）
