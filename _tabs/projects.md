@@ -9,7 +9,7 @@ order: 5
 - [Retro Lofi Radio](https://retro-radio-next-app.vercel.app/)
 
   - A retros-geek-style player for playing online Lofi/Jazz/Chill Youtube 24/7 live streaming.
-    ![retro-lofi-radio-screenshot.jpg](/assets/img/retro-radio-next-app.vercel.app_.png)
+    ![retro-lofi-radio-screenshot.jpg](https://hanchow-static-host.vercel.app/static/retro-lofi-radio-screenshot.png)
 
 - [SpringRoll App](https://springrollskates.com/)
   - An app for roller skating enthusiasts that includes features like a tricks generator, history listing, user profile information.
