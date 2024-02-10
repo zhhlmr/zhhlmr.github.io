@@ -25,7 +25,6 @@ tags:
 - [Notion](https://www.notion.so/) : 众所周知的软件了
 
   
-
 ## Visual Studio Code Plugins
 
 - Auto Close Tag
@@ -46,8 +45,14 @@ tags:
 - vscode-icons
 - Vue Language Features (Volar) - Vue3
 - Code Spell Checker
+- Codeium - AI Coding Autocomplete
+- CSS Peek
+- Rainglow - VSCode themes
+- Turbo Console log - great tools for console.logs
+- Version Lens - Can show the latest version for packages in your package.json
+- vscode-pets - A lovely pets in your VS Code :)
 
-## Download Websites
+## Software Download Websites
 
 - [https://soft.macx.cn/](https://soft.macx.cn/)
 - [https://www.hereitis.cn/}](https://www.hereitis.cn/)
